@@ -1,0 +1,12 @@
+schema:
+  - http://152.228.215.94:83/api
+documents:
+  - 'src/**/*.graphql'
+generates:
+  src/utils/__generated__/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withRefetchFn: true
