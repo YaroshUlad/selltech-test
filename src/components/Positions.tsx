@@ -14,6 +14,7 @@ export const Positions = () => {
     }
     return (
         <div>
+            Position Component
             {data.applicantIndividualCompanyPositions?.data.map(el => {
                 return (
                     <div key={el.id}>{el.name}</div>

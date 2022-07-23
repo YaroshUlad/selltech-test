@@ -7,6 +7,7 @@ function App() {
     //  headers: { }
   return (
     <div className="App">
+        App component
       <Positions/>
     </div>
   );
