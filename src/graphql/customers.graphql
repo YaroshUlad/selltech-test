@@ -6,3 +6,12 @@ query getApplicantIndividualCompanyPositions {
         }
     }
 }
+
+query getApplicantIndividualCompanyRelations {
+    applicantIndividualCompanyRelations {
+        data {
+            id
+            name
+        }
+    }
+}

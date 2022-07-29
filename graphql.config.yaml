@@ -1,5 +1,8 @@
 schema:
-  - http://152.228.215.94:83/api
+  - http://152.228.215.94:83/api:
+      headers: {
+        mode: 'no-cors'
+      }
 documents:
   - 'src/**/*.graphql'
 generates:

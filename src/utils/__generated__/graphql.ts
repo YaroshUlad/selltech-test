@@ -1,10 +1,15 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -114,7 +119,7 @@ export type AccountState = {
 
 export enum AccountType {
   Business = 'Business',
-  Private = 'Private'
+  Private = 'Private',
 }
 
 /**
@@ -890,7 +895,7 @@ export type ClientIpAddress = {
 
 export enum ClientType {
   Administration = 'Administration',
-  Client = 'Client'
+  Client = 'Client',
 }
 
 export type Clientable = ApplicantCompany | ApplicantIndividual | Members;
@@ -1386,7 +1391,7 @@ export type Fee = {
 export enum FeeMode {
   Fix = 'Fix',
   Percent = 'Percent',
-  Range = 'Range'
+  Range = 'Range',
 }
 
 /** Периоды комиссий */
@@ -1418,7 +1423,7 @@ export enum FieldTypes {
   /** Тип поля строка */
   Text = 'Text',
   /** Тип поля текстовое поле */
-  TextArea = 'TextArea'
+  TextArea = 'TextArea',
 }
 
 /** Файлы */
@@ -1497,7 +1502,7 @@ export type GroupType = {
 
 export enum GroupTypeMode {
   All = 'ALL',
-  Clients = 'CLIENTS'
+  Clients = 'CLIENTS',
 }
 
 export type Groups = {
@@ -1516,7 +1521,7 @@ export type Groups = {
 export enum GroupsEntities {
   Company = 'Company',
   Individual = 'Individual',
-  Member = 'Member'
+  Member = 'Member',
 }
 
 export type InputAccount = {
@@ -1662,7 +1667,7 @@ export enum MembersColumn {
   IsActive = 'IS_ACTIVE',
   IsShowOwnerApplicants = 'IS_SHOW_OWNER_APPLICANTS',
   LastLoginAt = 'LAST_LOGIN_AT',
-  PositionId = 'POSITION_ID'
+  PositionId = 'POSITION_ID',
 }
 
 /** A paginated list of Members items. */
@@ -1929,23 +1934,19 @@ export type Mutation = {
   updateTicket?: Maybe<Ticket>;
 };
 
-
 export type MutationAttachApplicantCompanyLabelArgs = {
   applicant_company_id: Scalars['ID'];
   applicant_company_label_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
-
 
 export type MutationAttachApplicantIndividualLabelArgs = {
   applicant_individual_id: Scalars['ID'];
   applicant_individual_label_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationCreateAccountArgs = {
   input: InputAccount;
 };
-
 
 export type MutationCreateAccountLimitArgs = {
   account_id: Scalars['ID'];
@@ -1957,7 +1958,6 @@ export type MutationCreateAccountLimitArgs = {
   currency_id?: InputMaybe<Scalars['ID']>;
   period_count?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type MutationCreateApplicantBankingAccessArgs = {
   applicant_company_id: Scalars['ID'];
@@ -1971,7 +1971,6 @@ export type MutationCreateApplicantBankingAccessArgs = {
   operation_limit: Scalars['Float'];
   used_limit?: InputMaybe<Scalars['Float']>;
 };
-
 
 export type MutationCreateApplicantCompanyArgs = {
   account_manager_member_id: Scalars['ID'];
@@ -2009,17 +2008,14 @@ export type MutationCreateApplicantCompanyArgs = {
   zip?: InputMaybe<Scalars['String']>;
 };
 
-
 export type MutationCreateApplicantCompanyBusinessTypeArgs = {
   name: Scalars['String'];
 };
-
 
 export type MutationCreateApplicantCompanyLabelArgs = {
   hex_color_code: Scalars['String'];
   name: Scalars['String'];
 };
-
 
 export type MutationCreateApplicantCompanyModuleArgs = {
   applicant_company_id: Scalars['ID'];
@@ -2027,13 +2023,11 @@ export type MutationCreateApplicantCompanyModuleArgs = {
   is_active?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 export type MutationCreateApplicantCompanyNoteArgs = {
   applicant_company_id: Scalars['ID'];
   member_id: Scalars['ID'];
   note: Scalars['String'];
 };
-
 
 export type MutationCreateApplicantCompanyRiskLevelArgs = {
   applicant_company_id: Scalars['ID'];
@@ -2041,13 +2035,11 @@ export type MutationCreateApplicantCompanyRiskLevelArgs = {
   member_id: Scalars['ID'];
 };
 
-
 export type MutationCreateApplicantCompanyRiskLevelHistoryArgs = {
   applicant_company_id: Scalars['ID'];
   comment: Scalars['String'];
   risk_level_id: Scalars['ID'];
 };
-
 
 export type MutationCreateApplicantIndividualArgs = {
   account_manager_member_id: Scalars['ID'];
@@ -2084,7 +2076,6 @@ export type MutationCreateApplicantIndividualArgs = {
   zip?: InputMaybe<Scalars['String']>;
 };
 
-
 export type MutationCreateApplicantIndividualCompanyArgs = {
   applicant_company_id: Scalars['ID'];
   applicant_individual_company_position_id: Scalars['ID'];
@@ -2092,22 +2083,18 @@ export type MutationCreateApplicantIndividualCompanyArgs = {
   applicant_individual_id: Scalars['ID'];
 };
 
-
 export type MutationCreateApplicantIndividualCompanyPositionArgs = {
   name: Scalars['String'];
 };
-
 
 export type MutationCreateApplicantIndividualCompanyRelationArgs = {
   name: Scalars['String'];
 };
 
-
 export type MutationCreateApplicantIndividualLabelArgs = {
   hex_color_code: Scalars['String'];
   name: Scalars['String'];
 };
-
 
 export type MutationCreateApplicantIndividualModuleArgs = {
   applicant_individual_id: Scalars['ID'];
@@ -2115,13 +2102,11 @@ export type MutationCreateApplicantIndividualModuleArgs = {
   is_active?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 export type MutationCreateApplicantIndividualNoteArgs = {
   applicant_individual_id: Scalars['ID'];
   member_id: Scalars['ID'];
   note: Scalars['String'];
 };
-
 
 export type MutationCreateApplicantIndividualRiskLevelArgs = {
   applicant_individual_id: Scalars['ID'];
@@ -2129,11 +2114,9 @@ export type MutationCreateApplicantIndividualRiskLevelArgs = {
   member_id: Scalars['ID'];
 };
 
-
 export type MutationCreateApplicantModuleArgs = {
   name: Scalars['String'];
 };
-
 
 export type MutationCreateApplicantRiskLevelHistoryArgs = {
   applicant_id: Scalars['ID'];
@@ -2141,16 +2124,13 @@ export type MutationCreateApplicantRiskLevelHistoryArgs = {
   risk_level_id: Scalars['ID'];
 };
 
-
 export type MutationCreateApplicantStateReasonArgs = {
   name: Scalars['String'];
 };
 
-
 export type MutationCreateBusinessActivityArgs = {
   name: Scalars['String'];
 };
-
 
 export type MutationCreateCommissionPriceListArgs = {
   commission_template_id: Scalars['ID'];
@@ -2159,13 +2139,11 @@ export type MutationCreateCommissionPriceListArgs = {
   provider_id: Scalars['ID'];
 };
 
-
 export type MutationCreateCommissionTemplateArgs = {
   description?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
   payment_provider_id: Scalars['ID'];
 };
-
 
 export type MutationCreateCommissionTemplateLimitArgs = {
   amount: Scalars['Float'];
@@ -2177,7 +2155,6 @@ export type MutationCreateCommissionTemplateLimitArgs = {
   currency_id?: InputMaybe<Scalars['ID']>;
   period_count?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type MutationCreateCompanyArgs = {
   address?: InputMaybe<Scalars['String']>;
@@ -2191,7 +2168,6 @@ export type MutationCreateCompanyArgs = {
   zip?: InputMaybe<Scalars['String']>;
 };
 
-
 export type MutationCreateCompanySettingsArgs = {
   company_id: Scalars['Int'];
   email_from?: InputMaybe<Scalars['EMAIL']>;
@@ -2200,20 +2176,17 @@ export type MutationCreateCompanySettingsArgs = {
   show_own_logo?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 export type MutationCreateDepartmentArgs = {
   company_id: Scalars['ID'];
   department_positions_name?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name: Scalars['String'];
 };
 
-
 export type MutationCreateDepartmentPositionArgs = {
   company_id: Scalars['ID'];
   department_id?: InputMaybe<Scalars['ID']>;
   name: Scalars['String'];
 };
-
 
 export type MutationCreateEmailNotificationArgs = {
   client_id?: InputMaybe<Scalars['Int']>;
@@ -2222,7 +2195,6 @@ export type MutationCreateEmailNotificationArgs = {
   group_type_id: Scalars['ID'];
   templates: Array<InputMaybe<Scalars['Int']>>;
 };
-
 
 export type MutationCreateEmailSmtpArgs = {
   company_id: Scalars['ID'];
@@ -2238,7 +2210,6 @@ export type MutationCreateEmailSmtpArgs = {
   username: Scalars['String'];
 };
 
-
 export type MutationCreateEmailTemplateArgs = {
   company_id: Scalars['ID'];
   content: Scalars['String'];
@@ -2251,13 +2222,11 @@ export type MutationCreateEmailTemplateArgs = {
   use_layout: Scalars['Boolean'];
 };
 
-
 export type MutationCreateEmailTemplateLayoutArgs = {
   company_id: Scalars['Int'];
   footer: Scalars['String'];
   header: Scalars['String'];
 };
-
 
 export type MutationCreateGroupSettingsArgs = {
   commission_template_id?: InputMaybe<Scalars['ID']>;
@@ -2269,7 +2238,6 @@ export type MutationCreateGroupSettingsArgs = {
   payment_provider_id?: InputMaybe<Scalars['ID']>;
   role_id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type MutationCreateMemberArgs = {
   company_id: Scalars['ID'];
@@ -2287,13 +2255,11 @@ export type MutationCreateMemberArgs = {
   two_factor_auth_setting_id: Scalars['ID'];
 };
 
-
 export type MutationCreateMemberAccessLimitationArgs = {
   commission_template_id?: InputMaybe<Scalars['ID']>;
   group_role_id: Scalars['ID'];
   member_id: Scalars['ID'];
 };
-
 
 export type MutationCreatePaymentArgs = {
   account_id: Scalars['ID'];
@@ -2324,7 +2290,6 @@ export type MutationCreatePaymentArgs = {
   urgency_id: Scalars['ID'];
 };
 
-
 export type MutationCreatePaymentProviderArgs = {
   description?: InputMaybe<Scalars['String']>;
   is_active?: InputMaybe<Scalars['Boolean']>;
@@ -2332,7 +2297,6 @@ export type MutationCreatePaymentProviderArgs = {
   name: Scalars['String'];
   payment_systems?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
-
 
 export type MutationCreatePaymentSystemArgs = {
   countries?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -2342,7 +2306,6 @@ export type MutationCreatePaymentSystemArgs = {
   providers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationCreatePriceListFeesArgs = {
   fee?: InputMaybe<Array<InputMaybe<Array<InputMaybe<Fee>>>>>;
   name?: InputMaybe<Scalars['String']>;
@@ -2351,7 +2314,6 @@ export type MutationCreatePriceListFeesArgs = {
   price_list_id: Scalars['Int'];
   type_id?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type MutationCreateRequisitesArgs = {
   account_id: Scalars['ID'];
@@ -2370,7 +2332,6 @@ export type MutationCreateRequisitesArgs = {
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
-
 export type MutationCreateRoleArgs = {
   company_id?: InputMaybe<Scalars['ID']>;
   description?: InputMaybe<Scalars['String']>;
@@ -2380,7 +2341,6 @@ export type MutationCreateRoleArgs = {
   permissions?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationCreateTicketArgs = {
   client_id: Scalars['ID'];
   company_id: Scalars['ID'];
@@ -2389,220 +2349,178 @@ export type MutationCreateTicketArgs = {
   title: Scalars['String'];
 };
 
-
 export type MutationCreateTicketCommentArgs = {
   client_id: Scalars['ID'];
   message: Scalars['String'];
   ticket_id: Scalars['ID'];
 };
 
-
 export type MutationDeleteAccountArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteAccountLimitArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteApplicantBankingAccessArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteApplicantCompanyArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteApplicantCompanyLabelArgs = {
   deleteAnyway?: InputMaybe<Scalars['Boolean']>;
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteApplicantCompanyModuleArgs = {
   applicant_company_id: Scalars['ID'];
   applicant_module_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationDeleteApplicantCompanyNoteArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteApplicantCompanyRiskLevelArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteApplicantCompanyRiskLevelHistoryArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteApplicantIndividualArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteApplicantIndividualCompanyArgs = {
   applicant_company_id: Scalars['ID'];
   applicant_individual_id: Scalars['ID'];
 };
 
-
 export type MutationDeleteApplicantIndividualLabelArgs = {
   deleteAnyway?: InputMaybe<Scalars['Boolean']>;
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteApplicantIndividualModuleArgs = {
   applicant_individual_id: Scalars['ID'];
   applicant_module_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationDeleteApplicantIndividualNoteArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteApplicantIndividualRiskLevelArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteApplicantRiskLevelHistoryArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteApplicantStateReasonArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteCommissionPriceListArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteCommissionTemplateArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteCommissionTemplateLimitArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteCompanyArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteDepartmentArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteDepartmentPositionArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteEmailNotificationArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteEmailSmtpArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteEmailTemplateArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteEmailTemplateLayoutArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteFileArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteGroupArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteMemberArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteMemberAccessLimitationArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeletePaymentArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeletePaymentProviderArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeletePaymentSystemArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeletePriceListFeesArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteRequisitesArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteRoleArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDetachApplicantCompanyLabelArgs = {
   applicant_company_id: Scalars['ID'];
   applicant_company_label_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationDetachApplicantIndividualLabelArgs = {
   applicant_individual_id: Scalars['ID'];
   applicant_individual_label_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationGenerateIbanArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationInviteMemberArgs = {
   company_id: Scalars['ID'];
@@ -2612,7 +2530,6 @@ export type MutationInviteMemberArgs = {
   last_name: Scalars['String'];
   two_factor_auth_setting_id: Scalars['ID'];
 };
-
 
 export type MutationSendEmailArgs = {
   email: Scalars['String'];
@@ -2626,7 +2543,6 @@ export type MutationSendEmailArgs = {
   username: Scalars['String'];
 };
 
-
 export type MutationSendEmailWithTemplateArgs = {
   company_id: Scalars['ID'];
   content?: InputMaybe<Scalars['String']>;
@@ -2636,13 +2552,11 @@ export type MutationSendEmailWithTemplateArgs = {
   subject: Scalars['String'];
 };
 
-
 export type MutationSetApplicantIndividualPasswordArgs = {
   id: Scalars['ID'];
   password: Scalars['String'];
   password_confirmation: Scalars['String'];
 };
-
 
 export type MutationSetMemberGroupArgs = {
   commission_template_id: Scalars['ID'];
@@ -2651,24 +2565,20 @@ export type MutationSetMemberGroupArgs = {
   role_id: Scalars['ID'];
 };
 
-
 export type MutationSetMemberPasswordArgs = {
   id: Scalars['ID'];
   password: Scalars['String'];
   password_confirmation: Scalars['String'];
 };
 
-
 export type MutationSetMemberSecurityPinArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdateAccountArgs = {
   id: Scalars['ID'];
   input: InputAccount;
 };
-
 
 export type MutationUpdateAccountLimitArgs = {
   amount?: InputMaybe<Scalars['Float']>;
@@ -2680,7 +2590,6 @@ export type MutationUpdateAccountLimitArgs = {
   id: Scalars['ID'];
   period_count?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type MutationUpdateApplicantBankingAccessArgs = {
   applicant_company_id: Scalars['ID'];
@@ -2695,7 +2604,6 @@ export type MutationUpdateApplicantBankingAccessArgs = {
   operation_limit: Scalars['Float'];
   used_limit?: InputMaybe<Scalars['Float']>;
 };
-
 
 export type MutationUpdateApplicantCompanyArgs = {
   account_manager_member_id?: InputMaybe<Scalars['ID']>;
@@ -2736,12 +2644,10 @@ export type MutationUpdateApplicantCompanyArgs = {
   zip?: InputMaybe<Scalars['String']>;
 };
 
-
 export type MutationUpdateApplicantCompanyBusinessTypeArgs = {
   id: Scalars['ID'];
   name: Scalars['String'];
 };
-
 
 export type MutationUpdateApplicantCompanyLabelArgs = {
   hex_color_code?: InputMaybe<Scalars['String']>;
@@ -2749,13 +2655,11 @@ export type MutationUpdateApplicantCompanyLabelArgs = {
   name: Scalars['String'];
 };
 
-
 export type MutationUpdateApplicantCompanyModuleArgs = {
   applicant_company_id: Scalars['ID'];
   applicant_module_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   is_active?: InputMaybe<Scalars['Boolean']>;
 };
-
 
 export type MutationUpdateApplicantIndividualArgs = {
   account_manager_member_id?: InputMaybe<Scalars['ID']>;
@@ -2795,7 +2699,6 @@ export type MutationUpdateApplicantIndividualArgs = {
   zip?: InputMaybe<Scalars['String']>;
 };
 
-
 export type MutationUpdateApplicantIndividualCompanyArgs = {
   applicant_company_id: Scalars['ID'];
   applicant_individual_company_position_id?: InputMaybe<Scalars['ID']>;
@@ -2803,18 +2706,15 @@ export type MutationUpdateApplicantIndividualCompanyArgs = {
   applicant_individual_id: Scalars['ID'];
 };
 
-
 export type MutationUpdateApplicantIndividualCompanyPositionArgs = {
   id: Scalars['ID'];
   name: Scalars['String'];
 };
 
-
 export type MutationUpdateApplicantIndividualCompanyRelationArgs = {
   id: Scalars['ID'];
   name: Scalars['String'];
 };
-
 
 export type MutationUpdateApplicantIndividualLabelArgs = {
   hex_color_code?: InputMaybe<Scalars['String']>;
@@ -2822,25 +2722,21 @@ export type MutationUpdateApplicantIndividualLabelArgs = {
   name: Scalars['String'];
 };
 
-
 export type MutationUpdateApplicantIndividualModuleArgs = {
   applicant_individual_id: Scalars['ID'];
   applicant_module_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   is_active?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 export type MutationUpdateApplicantStateReasonArgs = {
   id: Scalars['ID'];
   name: Scalars['String'];
 };
 
-
 export type MutationUpdateBusinessActivityArgs = {
   id: Scalars['ID'];
   name: Scalars['String'];
 };
-
 
 export type MutationUpdateCommissionPriceListArgs = {
   commission_template_id: Scalars['ID'];
@@ -2849,7 +2745,6 @@ export type MutationUpdateCommissionPriceListArgs = {
   payment_system_id: Scalars['ID'];
   provider_id: Scalars['ID'];
 };
-
 
 export type MutationUpdateCommissionTemplateArgs = {
   business_activity?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -2863,7 +2758,6 @@ export type MutationUpdateCommissionTemplateArgs = {
   payment_provider_id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type MutationUpdateCommissionTemplateLimitArgs = {
   amount?: InputMaybe<Scalars['Float']>;
   commission_template_id: Scalars['ID'];
@@ -2875,7 +2769,6 @@ export type MutationUpdateCommissionTemplateLimitArgs = {
   id: Scalars['ID'];
   period_count?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type MutationUpdateCompanyArgs = {
   additional_fields?: InputMaybe<Array<InputMaybe<AdditionalFieldInput>>>;
@@ -2891,7 +2784,6 @@ export type MutationUpdateCompanyArgs = {
   zip?: InputMaybe<Scalars['String']>;
 };
 
-
 export type MutationUpdateCompanySettingsArgs = {
   company_id: Scalars['ID'];
   email_from?: InputMaybe<Scalars['EMAIL']>;
@@ -2900,12 +2792,10 @@ export type MutationUpdateCompanySettingsArgs = {
   show_own_logo?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 export type MutationUpdateDepartmentArgs = {
   active_department_positions_id?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdateEmailNotificationArgs = {
   client_id?: InputMaybe<Scalars['Int']>;
@@ -2915,7 +2805,6 @@ export type MutationUpdateEmailNotificationArgs = {
   id: Scalars['ID'];
   templates?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
 };
-
 
 export type MutationUpdateEmailSmtpArgs = {
   from_email?: InputMaybe<Scalars['String']>;
@@ -2930,7 +2819,6 @@ export type MutationUpdateEmailSmtpArgs = {
   username?: InputMaybe<Scalars['String']>;
 };
 
-
 export type MutationUpdateEmailTemplateArgs = {
   company_id?: InputMaybe<Scalars['ID']>;
   content?: InputMaybe<Scalars['String']>;
@@ -2944,14 +2832,12 @@ export type MutationUpdateEmailTemplateArgs = {
   use_layout?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 export type MutationUpdateEmailTemplateLayoutArgs = {
   company_id: Scalars['Int'];
   footer?: InputMaybe<Scalars['String']>;
   header?: InputMaybe<Scalars['String']>;
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdateGroupSettingsArgs = {
   commission_template_id?: InputMaybe<Scalars['ID']>;
@@ -2964,7 +2850,6 @@ export type MutationUpdateGroupSettingsArgs = {
   payment_provider_id?: InputMaybe<Scalars['ID']>;
   role_id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type MutationUpdateMemberArgs = {
   additional_fields?: InputMaybe<Array<InputMaybe<AdditionalFieldInput>>>;
@@ -2986,13 +2871,11 @@ export type MutationUpdateMemberArgs = {
   two_factor_auth_setting_id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type MutationUpdateMemberAccessLimitationArgs = {
   commission_template_id?: InputMaybe<Scalars['ID']>;
   group_role_id: Scalars['ID'];
   member_id: Scalars['ID'];
 };
-
 
 export type MutationUpdatePaymentArgs = {
   account_id?: InputMaybe<Scalars['ID']>;
@@ -3017,7 +2900,6 @@ export type MutationUpdatePaymentArgs = {
   urgency_id: Scalars['ID'];
 };
 
-
 export type MutationUpdatePaymentProviderArgs = {
   description?: InputMaybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -3026,7 +2908,6 @@ export type MutationUpdatePaymentProviderArgs = {
   name?: InputMaybe<Scalars['String']>;
   payment_systems?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
-
 
 export type MutationUpdatePaymentSystemArgs = {
   countries?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -3037,7 +2918,6 @@ export type MutationUpdatePaymentSystemArgs = {
   providers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationUpdatePriceListFeesArgs = {
   fee?: InputMaybe<Array<InputMaybe<Array<InputMaybe<Fee>>>>>;
   id: Scalars['ID'];
@@ -3046,7 +2926,6 @@ export type MutationUpdatePriceListFeesArgs = {
   period_id?: InputMaybe<Scalars['Int']>;
   type_id?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type MutationUpdateRequisitesArgs = {
   account_id?: InputMaybe<Scalars['ID']>;
@@ -3066,7 +2945,6 @@ export type MutationUpdateRequisitesArgs = {
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
-
 export type MutationUpdateRoleArgs = {
   company_id?: InputMaybe<Scalars['ID']>;
   description?: InputMaybe<Scalars['String']>;
@@ -3077,7 +2955,6 @@ export type MutationUpdateRoleArgs = {
   permissions?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-
 export type MutationUpdateTicketArgs = {
   id: Scalars['ID'];
   status: Scalars['Int'];
@@ -3085,7 +2962,7 @@ export type MutationUpdateTicketArgs = {
 
 export enum NotifyType {
   Administration = 'Administration',
-  Client = 'Client'
+  Client = 'Client',
 }
 
 /** Типы операций */
@@ -3106,7 +2983,7 @@ export type OrderByClause = {
 /** Aggregate functions when ordering by a relation without specifying a column. */
 export enum OrderByRelationAggregateFunction {
   /** Amount of items. */
-  Count = 'COUNT'
+  Count = 'COUNT',
 }
 
 /** Aggregate functions when ordering by a relation that may specify a column. */
@@ -3120,7 +2997,7 @@ export enum OrderByRelationWithColumnAggregateFunction {
   /** Minimum. */
   Min = 'MIN',
   /** Sum. */
-  Sum = 'SUM'
+  Sum = 'SUM',
 }
 
 /** Information about pagination using a Relay style cursor connection. */
@@ -3320,14 +3197,13 @@ export type PermissionCategory = {
   permissionList?: Maybe<Array<Maybe<PermissionList>>>;
 };
 
-
 export type PermissionCategoryPermissionListArgs = {
   permissionType?: InputMaybe<PermissionCategoryPermissionListPermissionTypeWhereConditions>;
 };
 
 /** Allowed column names for PermissionCategory.permissionList.permissionType. */
 export enum PermissionCategoryPermissionListPermissionTypeColumn {
-  Type = 'TYPE'
+  Type = 'TYPE',
 }
 
 /** Dynamic WHERE conditions for the `permissionType` argument on the query `permissionList`. */
@@ -3376,12 +3252,12 @@ export type PermissionList = {
 
 export enum PermissionListType {
   Individual = 'Individual',
-  Member = 'Member'
+  Member = 'Member',
 }
 
 export enum PermissionSeparatorType {
   Business = 'Business',
-  Private = 'Private'
+  Private = 'Private',
 }
 
 /**
@@ -3862,16 +3738,13 @@ export type Query = {
   users?: Maybe<UsersPaginator>;
 };
 
-
 export type QueryAccountArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryAccountLimitArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryAccountLimitsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -3886,11 +3759,9 @@ export type QueryAccountLimitsArgs = {
   where?: InputMaybe<QueryAccountLimitsWhereWhereConditions>;
 };
 
-
 export type QueryAccountReachedLimitArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryAccountReachedLimitsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -3900,11 +3771,9 @@ export type QueryAccountReachedLimitsArgs = {
   where?: InputMaybe<QueryAccountReachedLimitsWhereWhereConditions>;
 };
 
-
 export type QueryAccountStatesArgs = {
   orderBy?: InputMaybe<Array<QueryAccountStatesOrderByOrderByClause>>;
 };
-
 
 export type QueryAccountsArgs = {
   created_at?: InputMaybe<DateRange>;
@@ -3915,14 +3784,12 @@ export type QueryAccountsArgs = {
   query?: InputMaybe<QueryAccountCondition>;
 };
 
-
 export type QueryApplicantBankingAccessArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryApplicantBankingAccessOrderByOrderByClause>>;
   page?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<QueryApplicantBankingAccessWhereWhereConditions>;
 };
-
 
 export type QueryApplicantCompaniesArgs = {
   company?: InputMaybe<Sort>;
@@ -3941,11 +3808,9 @@ export type QueryApplicantCompaniesArgs = {
   where?: InputMaybe<QueryApplicantCompaniesWhereWhereConditions>;
 };
 
-
 export type QueryApplicantCompanyArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantCompanyBusinessTypeArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -3954,18 +3819,15 @@ export type QueryApplicantCompanyBusinessTypeArgs = {
   where?: InputMaybe<QueryApplicantCompanyBusinessTypeWhereWhereConditions>;
 };
 
-
 export type QueryApplicantCompanyLabelArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantCompanyLabelsArgs = {
   company_id?: InputMaybe<Scalars['ID']>;
   orderBy?: InputMaybe<Array<QueryApplicantCompanyLabelsOrderByOrderByClause>>;
   where?: InputMaybe<QueryApplicantCompanyLabelsWhereWhereConditions>;
 };
-
 
 export type QueryApplicantCompanyLabelsAvailableArgs = {
   company_id?: InputMaybe<Scalars['ID']>;
@@ -3974,7 +3836,6 @@ export type QueryApplicantCompanyLabelsAvailableArgs = {
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryApplicantCompanyModulesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryApplicantCompanyModulesOrderByOrderByClause>>;
@@ -3982,11 +3843,9 @@ export type QueryApplicantCompanyModulesArgs = {
   where?: InputMaybe<QueryApplicantCompanyModulesWhereWhereConditions>;
 };
 
-
 export type QueryApplicantCompanyNoteArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantCompanyNotesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -3994,11 +3853,9 @@ export type QueryApplicantCompanyNotesArgs = {
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryApplicantCompanyRiskLevelArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantCompanyRiskLevelHistoryArgs = {
   applicant_company_id: Scalars['ID'];
@@ -4008,49 +3865,45 @@ export type QueryApplicantCompanyRiskLevelHistoryArgs = {
   where?: InputMaybe<QueryApplicantCompanyRiskLevelHistoryWhereWhereConditions>;
 };
 
-
 export type QueryApplicantCompanyRiskLevelsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryApplicantCompanyRiskLevelsOrderByOrderByClause>>;
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryApplicantIndividualArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantIndividualCompanyPositionArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryApplicantIndividualCompanyPositionsArgs = {
   first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<QueryApplicantIndividualCompanyPositionsOrderByOrderByClause>>;
+  orderBy?: InputMaybe<
+    Array<QueryApplicantIndividualCompanyPositionsOrderByOrderByClause>
+  >;
   page?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<QueryApplicantIndividualCompanyPositionsWhereWhereConditions>;
 };
-
 
 export type QueryApplicantIndividualCompanyRelationArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryApplicantIndividualCompanyRelationsArgs = {
   first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<QueryApplicantIndividualCompanyRelationsOrderByOrderByClause>>;
+  orderBy?: InputMaybe<
+    Array<QueryApplicantIndividualCompanyRelationsOrderByOrderByClause>
+  >;
   page?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<QueryApplicantIndividualCompanyRelationsWhereWhereConditions>;
 };
 
-
 export type QueryApplicantIndividualLabelArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantIndividualLabelsArgs = {
   applicant_id?: InputMaybe<Scalars['ID']>;
@@ -4058,14 +3911,14 @@ export type QueryApplicantIndividualLabelsArgs = {
   where?: InputMaybe<QueryApplicantIndividualLabelsWhereWhereConditions>;
 };
 
-
 export type QueryApplicantIndividualLabelsAvailableArgs = {
   applicant_id?: InputMaybe<Scalars['ID']>;
   first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<QueryApplicantIndividualLabelsAvailableOrderByOrderByClause>>;
+  orderBy?: InputMaybe<
+    Array<QueryApplicantIndividualLabelsAvailableOrderByOrderByClause>
+  >;
   page?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryApplicantIndividualModulesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4074,11 +3927,9 @@ export type QueryApplicantIndividualModulesArgs = {
   where?: InputMaybe<QueryApplicantIndividualModulesWhereWhereConditions>;
 };
 
-
 export type QueryApplicantIndividualNoteArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantIndividualNotesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4086,18 +3937,15 @@ export type QueryApplicantIndividualNotesArgs = {
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryApplicantIndividualRiskLevelArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantIndividualRiskLevelsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryApplicantIndividualRiskLevelsOrderByOrderByClause>>;
   page?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryApplicantIndividualsArgs = {
   company?: InputMaybe<Sort>;
@@ -4113,11 +3961,9 @@ export type QueryApplicantIndividualsArgs = {
   where?: InputMaybe<QueryApplicantIndividualsWhereWhereConditions>;
 };
 
-
 export type QueryApplicantKycLevelArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantKycLevelsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4126,11 +3972,9 @@ export type QueryApplicantKycLevelsArgs = {
   where?: InputMaybe<QueryApplicantKycLevelsWhereWhereConditions>;
 };
 
-
 export type QueryApplicantRiskLevelArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantRiskLevelHistoryArgs = {
   applicant_id: Scalars['ID'];
@@ -4140,7 +3984,6 @@ export type QueryApplicantRiskLevelHistoryArgs = {
   where?: InputMaybe<QueryApplicantRiskLevelHistoryWhereWhereConditions>;
 };
 
-
 export type QueryApplicantRiskLevelsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryApplicantRiskLevelsOrderByOrderByClause>>;
@@ -4148,16 +3991,13 @@ export type QueryApplicantRiskLevelsArgs = {
   where?: InputMaybe<QueryApplicantRiskLevelsWhereWhereConditions>;
 };
 
-
 export type QueryApplicantStateArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryApplicantStateReasonArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantStateReasonsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4166,7 +4006,6 @@ export type QueryApplicantStateReasonsArgs = {
   where?: InputMaybe<QueryApplicantStateReasonsWhereWhereConditions>;
 };
 
-
 export type QueryApplicantStatesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryApplicantStatesOrderByOrderByClause>>;
@@ -4174,11 +4013,9 @@ export type QueryApplicantStatesArgs = {
   where?: InputMaybe<QueryApplicantStatesWhereWhereConditions>;
 };
 
-
 export type QueryApplicantStatusArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicantStatusesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4187,11 +4024,9 @@ export type QueryApplicantStatusesArgs = {
   where?: InputMaybe<QueryApplicantStatusesWhereWhereConditions>;
 };
 
-
 export type QueryApplicant_ModuleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryApplicant_ModulesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4200,7 +4035,6 @@ export type QueryApplicant_ModulesArgs = {
   where?: InputMaybe<QueryApplicantModulesWhereWhereConditions>;
 };
 
-
 export type QueryBusinessActivitiesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryBusinessActivitiesOrderByOrderByClause>>;
@@ -4208,21 +4042,17 @@ export type QueryBusinessActivitiesArgs = {
   where?: InputMaybe<QueryBusinessActivitiesWhereWhereConditions>;
 };
 
-
 export type QueryBusinessActivityArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryClientListArgs = {
   group_type: Scalars['ID'];
 };
 
-
 export type QueryCommissionPriceListArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryCommissionPriceListsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4238,16 +4068,13 @@ export type QueryCommissionPriceListsArgs = {
   where?: InputMaybe<QueryCommissionPriceListsWhereWhereConditions>;
 };
 
-
 export type QueryCommissionTemplateArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryCommissionTemplateLimitArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryCommissionTemplateLimitActionTypeArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4256,11 +4083,9 @@ export type QueryCommissionTemplateLimitActionTypeArgs = {
   where?: InputMaybe<QueryCommissionTemplateLimitActionTypeWhereWhereConditions>;
 };
 
-
 export type QueryCommissionTemplateLimitPeriodArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryCommissionTemplateLimitPeriodsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4269,24 +4094,22 @@ export type QueryCommissionTemplateLimitPeriodsArgs = {
   where?: InputMaybe<QueryCommissionTemplateLimitPeriodsWhereWhereConditions>;
 };
 
-
 export type QueryCommissionTemplateLimitTransferDirectionArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryCommissionTemplateLimitTransferDirectionsArgs = {
   first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<QueryCommissionTemplateLimitTransferDirectionsOrderByOrderByClause>>;
+  orderBy?: InputMaybe<
+    Array<QueryCommissionTemplateLimitTransferDirectionsOrderByOrderByClause>
+  >;
   page?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditions>;
 };
 
-
 export type QueryCommissionTemplateLimitTypeArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryCommissionTemplateLimitTypesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4295,12 +4118,10 @@ export type QueryCommissionTemplateLimitTypesArgs = {
   where?: InputMaybe<QueryCommissionTemplateLimitTypesWhereWhereConditions>;
 };
 
-
 export type QueryCommissionTemplateLimitsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryCommissionTemplatesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4315,7 +4136,6 @@ export type QueryCommissionTemplatesArgs = {
   where?: InputMaybe<QueryCommissionTemplatesWhereWhereConditions>;
 };
 
-
 export type QueryCompaniesArgs = {
   country?: InputMaybe<Sort>;
   created_at?: InputMaybe<DateRange>;
@@ -4326,48 +4146,39 @@ export type QueryCompaniesArgs = {
   where?: InputMaybe<QueryCompaniesWhereWhereConditions>;
 };
 
-
 export type QueryCompanyArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryCompanySettingsArgs = {
   company_id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryCountriesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryCountryArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryCurrenciesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryCurrencyArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryDepartmentArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryDepartmentPositionArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryDepartmentPositionsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4377,7 +4188,6 @@ export type QueryDepartmentPositionsArgs = {
   where?: InputMaybe<QueryDepartmentPositionsWhereWhereConditions>;
 };
 
-
 export type QueryDepartmentsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   hasCompany?: InputMaybe<QueryDepartmentsHasCompanyWhereHasConditions>;
@@ -4386,14 +4196,12 @@ export type QueryDepartmentsArgs = {
   where?: InputMaybe<QueryDepartmentsWhereWhereConditions>;
 };
 
-
 export type QueryEmailNotificationArgs = {
   client_id?: InputMaybe<Scalars['ID']>;
   company_id: Scalars['ID'];
   group_role_id: Scalars['ID'];
   group_type_id: Scalars['ID'];
 };
-
 
 export type QueryEmailNotificationsArgs = {
   created_at?: InputMaybe<DateRange>;
@@ -4409,27 +4217,22 @@ export type QueryEmailNotificationsArgs = {
   where?: InputMaybe<QueryEmailNotificationsWhereWhereConditions>;
 };
 
-
 export type QueryEmailSmtpArgs = {
   id: Scalars['ID'];
 };
-
 
 export type QueryEmailSmtpsArgs = {
   company_id: Scalars['ID'];
   orderBy?: InputMaybe<Array<QueryEmailSmtpsOrderByOrderByClause>>;
 };
 
-
 export type QueryEmailTemplateArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryEmailTemplateLayoutArgs = {
   company_id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryEmailTemplatesArgs = {
   created_at?: InputMaybe<DateRange>;
@@ -4440,11 +4243,9 @@ export type QueryEmailTemplatesArgs = {
   where?: InputMaybe<QueryEmailTemplatesWhereWhereConditions>;
 };
 
-
 export type QueryFileArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryFilesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4453,14 +4254,12 @@ export type QueryFilesArgs = {
   where?: InputMaybe<QueryFilesWhereWhereConditions>;
 };
 
-
 export type QueryGetMatchedUsersArgs = {
   applicant_company_id: Scalars['ID'];
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<QueryGetMatchedUsersOrderByOrderByClause>>;
   page?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryGroupListArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4469,16 +4268,13 @@ export type QueryGroupListArgs = {
   query?: InputMaybe<QueryGroupCondition>;
 };
 
-
 export type QueryGroup_TypeArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryGroup_TypesArgs = {
   mode?: InputMaybe<GroupTypeMode>;
 };
-
 
 export type QueryGroupsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4491,27 +4287,22 @@ export type QueryGroupsArgs = {
   where?: InputMaybe<QueryGroupsWhereWhereConditions>;
 };
 
-
 export type QueryLanguageArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryLanguagesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryMemberArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryMemberAccessLimitationArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryMemberAccessLimitationsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4524,7 +4315,6 @@ export type QueryMemberAccessLimitationsArgs = {
   where?: InputMaybe<QueryMemberAccessLimitationsWhereWhereConditions>;
 };
 
-
 export type QueryMembersArgs = {
   companyName?: InputMaybe<Sort>;
   first?: InputMaybe<Scalars['Int']>;
@@ -4535,26 +4325,21 @@ export type QueryMembersArgs = {
   where?: InputMaybe<QueryMembersWhereWhereConditions>;
 };
 
-
 export type QueryOperationTypesArgs = {
   where?: InputMaybe<QueryOperationTypesWhereWhereConditions>;
 };
-
 
 export type QueryOwnersArgs = {
   orderBy?: InputMaybe<Array<QueryOwnersOrderByOrderByClause>>;
 };
 
-
 export type QueryPaymentArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryPaymentProviderArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryPaymentProvidersArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4564,11 +4349,9 @@ export type QueryPaymentProvidersArgs = {
   where?: InputMaybe<QueryPaymentProvidersWhereWhereConditions>;
 };
 
-
 export type QueryPaymentSystemArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryPaymentSystemsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4579,7 +4362,6 @@ export type QueryPaymentSystemsArgs = {
   page?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<QueryPaymentSystemsWhereWhereConditions>;
 };
-
 
 export type QueryPaymentsArgs = {
   AccountNumber?: InputMaybe<Sort>;
@@ -4597,16 +4379,13 @@ export type QueryPaymentsArgs = {
   where?: InputMaybe<QueryPaymentsWhereWhereConditions>;
 };
 
-
 export type QueryPermissionArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryPermissionsArgs = {
   where?: InputMaybe<QueryPermissionsWhereWhereConditions>;
 };
-
 
 export type QueryPriceListFeesArgs = {
   hasList?: InputMaybe<QueryPriceListFeesHasListWhereHasConditions>;
@@ -4614,11 +4393,9 @@ export type QueryPriceListFeesArgs = {
   where?: InputMaybe<QueryPriceListFeesWhereWhereConditions>;
 };
 
-
 export type QueryRequisiteArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryRequisitesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4627,11 +4404,9 @@ export type QueryRequisitesArgs = {
   where?: InputMaybe<QueryRequisitesWhereWhereConditions>;
 };
 
-
 export type QueryRoleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryRolesArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4643,16 +4418,13 @@ export type QueryRolesArgs = {
   where?: InputMaybe<QueryRolesWhereWhereConditions>;
 };
 
-
 export type QueryTicketArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryTicketCommentArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryTicketsArgs = {
   created_at?: InputMaybe<DateRange>;
@@ -4667,17 +4439,14 @@ export type QueryTicketsArgs = {
   where?: InputMaybe<QueryTicketsWhereWhereConditions>;
 };
 
-
 export type QueryTwoFactorAuthArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryTwoFactorsAuthArgs = {
   first?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryUsersArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -4706,7 +4475,7 @@ export type QueryAccountCondition = {
 /** Allowed column names for Query.accountLimits.hasAccount. */
 export enum QueryAccountLimitsHasAccountColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasAccount` argument on the query `accountLimits`. */
@@ -4740,17 +4509,21 @@ export type QueryAccountLimitsHasAccountWhereHasConditionsRelation = {
 /** Allowed column names for Query.accountLimits.hasCommissionTemplateLimitActionType. */
 export enum QueryAccountLimitsHasCommissionTemplateLimitActionTypeColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCommissionTemplateLimitActionType` argument on the query `accountLimits`. */
 export type QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditions = {
   /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditions>>;
+  AND?: InputMaybe<
+    Array<QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditions>
+  >;
   /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
   HAS?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditionsRelation>;
   /** A set of conditions that requires at least one condition to match. */
-  OR?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditions>>;
+  OR?: InputMaybe<
+    Array<QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditions>
+  >;
   /** The column that is used for the condition. */
   column?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitActionTypeColumn>;
   /** The operator that is used for the condition. */
@@ -4760,31 +4533,36 @@ export type QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasCondit
 };
 
 /** Dynamic HAS conditions for WHERE conditions for the `hasCommissionTemplateLimitActionType` argument on the query `accountLimits`. */
-export type QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditionsRelation = {
-  /** The amount to test. */
-  amount?: InputMaybe<Scalars['Int']>;
-  /** Additional condition logic. */
-  condition?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditions>;
-  /** The comparison operator to test against the amount. */
-  operator?: InputMaybe<SqlOperator>;
-  /** The relation that is checked. */
-  relation: Scalars['String'];
-};
+export type QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditionsRelation =
+  {
+    /** The amount to test. */
+    amount?: InputMaybe<Scalars['Int']>;
+    /** Additional condition logic. */
+    condition?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitActionTypeWhereHasConditions>;
+    /** The comparison operator to test against the amount. */
+    operator?: InputMaybe<SqlOperator>;
+    /** The relation that is checked. */
+    relation: Scalars['String'];
+  };
 
 /** Allowed column names for Query.accountLimits.hasCommissionTemplateLimitPeriod. */
 export enum QueryAccountLimitsHasCommissionTemplateLimitPeriodColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCommissionTemplateLimitPeriod` argument on the query `accountLimits`. */
 export type QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions = {
   /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions>>;
+  AND?: InputMaybe<
+    Array<QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions>
+  >;
   /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
   HAS?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditionsRelation>;
   /** A set of conditions that requires at least one condition to match. */
-  OR?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions>>;
+  OR?: InputMaybe<
+    Array<QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions>
+  >;
   /** The column that is used for the condition. */
   column?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitPeriodColumn>;
   /** The operator that is used for the condition. */
@@ -4794,65 +4572,76 @@ export type QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions
 };
 
 /** Dynamic HAS conditions for WHERE conditions for the `hasCommissionTemplateLimitPeriod` argument on the query `accountLimits`. */
-export type QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditionsRelation = {
-  /** The amount to test. */
-  amount?: InputMaybe<Scalars['Int']>;
-  /** Additional condition logic. */
-  condition?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions>;
-  /** The comparison operator to test against the amount. */
-  operator?: InputMaybe<SqlOperator>;
-  /** The relation that is checked. */
-  relation: Scalars['String'];
-};
+export type QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditionsRelation =
+  {
+    /** The amount to test. */
+    amount?: InputMaybe<Scalars['Int']>;
+    /** Additional condition logic. */
+    condition?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitPeriodWhereHasConditions>;
+    /** The comparison operator to test against the amount. */
+    operator?: InputMaybe<SqlOperator>;
+    /** The relation that is checked. */
+    relation: Scalars['String'];
+  };
 
 /** Allowed column names for Query.accountLimits.hasCommissionTemplateLimitTransferDirection. */
 export enum QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCommissionTemplateLimitTransferDirection` argument on the query `accountLimits`. */
-export type QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions = {
-  /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions>>;
-  /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
-  HAS?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditionsRelation>;
-  /** A set of conditions that requires at least one condition to match. */
-  OR?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions>>;
-  /** The column that is used for the condition. */
-  column?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionColumn>;
-  /** The operator that is used for the condition. */
-  operator?: InputMaybe<SqlOperator>;
-  /** The value that is used for the condition. */
-  value?: InputMaybe<Scalars['Mixed']>;
-};
+export type QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions =
+  {
+    /** A set of conditions that requires all conditions to match. */
+    AND?: InputMaybe<
+      Array<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions>
+    >;
+    /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
+    HAS?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditionsRelation>;
+    /** A set of conditions that requires at least one condition to match. */
+    OR?: InputMaybe<
+      Array<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions>
+    >;
+    /** The column that is used for the condition. */
+    column?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionColumn>;
+    /** The operator that is used for the condition. */
+    operator?: InputMaybe<SqlOperator>;
+    /** The value that is used for the condition. */
+    value?: InputMaybe<Scalars['Mixed']>;
+  };
 
 /** Dynamic HAS conditions for WHERE conditions for the `hasCommissionTemplateLimitTransferDirection` argument on the query `accountLimits`. */
-export type QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditionsRelation = {
-  /** The amount to test. */
-  amount?: InputMaybe<Scalars['Int']>;
-  /** Additional condition logic. */
-  condition?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions>;
-  /** The comparison operator to test against the amount. */
-  operator?: InputMaybe<SqlOperator>;
-  /** The relation that is checked. */
-  relation: Scalars['String'];
-};
+export type QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditionsRelation =
+  {
+    /** The amount to test. */
+    amount?: InputMaybe<Scalars['Int']>;
+    /** Additional condition logic. */
+    condition?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTransferDirectionWhereHasConditions>;
+    /** The comparison operator to test against the amount. */
+    operator?: InputMaybe<SqlOperator>;
+    /** The relation that is checked. */
+    relation: Scalars['String'];
+  };
 
 /** Allowed column names for Query.accountLimits.hasCommissionTemplateLimitType. */
 export enum QueryAccountLimitsHasCommissionTemplateLimitTypeColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCommissionTemplateLimitType` argument on the query `accountLimits`. */
 export type QueryAccountLimitsHasCommissionTemplateLimitTypeWhereHasConditions = {
   /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitTypeWhereHasConditions>>;
+  AND?: InputMaybe<
+    Array<QueryAccountLimitsHasCommissionTemplateLimitTypeWhereHasConditions>
+  >;
   /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
   HAS?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTypeWhereHasConditionsRelation>;
   /** A set of conditions that requires at least one condition to match. */
-  OR?: InputMaybe<Array<QueryAccountLimitsHasCommissionTemplateLimitTypeWhereHasConditions>>;
+  OR?: InputMaybe<
+    Array<QueryAccountLimitsHasCommissionTemplateLimitTypeWhereHasConditions>
+  >;
   /** The column that is used for the condition. */
   column?: InputMaybe<QueryAccountLimitsHasCommissionTemplateLimitTypeColumn>;
   /** The operator that is used for the condition. */
@@ -4876,7 +4665,7 @@ export type QueryAccountLimitsHasCommissionTemplateLimitTypeWhereHasConditionsRe
 /** Allowed column names for Query.accountLimits.hasCurrency. */
 export enum QueryAccountLimitsHasCurrencyColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCurrency` argument on the query `accountLimits`. */
@@ -4909,7 +4698,7 @@ export type QueryAccountLimitsHasCurrencyWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.accountLimits.orderBy. */
 export enum QueryAccountLimitsOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.accountLimits.orderBy. */
@@ -4924,7 +4713,7 @@ export type QueryAccountLimitsOrderByOrderByClause = {
 export enum QueryAccountLimitsWhereColumn {
   AccountId = 'ACCOUNT_ID',
   Amount = 'AMOUNT',
-  PeriodCount = 'PERIOD_COUNT'
+  PeriodCount = 'PERIOD_COUNT',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `accountLimits`. */
@@ -4958,7 +4747,7 @@ export type QueryAccountLimitsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.accountReachedLimits.hasAccount. */
 export enum QueryAccountReachedLimitsHasAccountColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasAccount` argument on the query `accountReachedLimits`. */
@@ -4991,7 +4780,7 @@ export type QueryAccountReachedLimitsHasAccountWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.accountReachedLimits.orderBy. */
 export enum QueryAccountReachedLimitsOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.accountReachedLimits.orderBy. */
@@ -5007,13 +4796,14 @@ export enum QueryAccountReachedLimitsWhereColumn {
   AccountId = 'ACCOUNT_ID',
   Amount = 'AMOUNT',
   ClientName = 'CLIENT_NAME',
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   ClientType = 'CLIENT_TYPE',
   GroupType = 'GROUP_TYPE',
   LimitCurrency = 'LIMIT_CURRENCY',
   LimitType = 'LIMIT_TYPE',
   LimitValue = 'LIMIT_VALUE',
   Period = 'PERIOD',
-  TransferDirection = 'TRANSFER_DIRECTION'
+  TransferDirection = 'TRANSFER_DIRECTION',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `accountReachedLimits`. */
@@ -5047,7 +4837,7 @@ export type QueryAccountReachedLimitsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.accountStates.orderBy. */
 export enum QueryAccountStatesOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.accountStates.orderBy. */
@@ -5062,6 +4852,7 @@ export enum QueryAccountWhereColumn {
   AccountName = 'ACCOUNT_NAME',
   AccountNumber = 'ACCOUNT_NUMBER',
   AccountStateId = 'ACCOUNT_STATE_ID',
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   AccountType = 'ACCOUNT_TYPE',
   ClientId = 'CLIENT_ID',
   CommissionTemplateId = 'COMMISSION_TEMPLATE_ID',
@@ -5072,12 +4863,12 @@ export enum QueryAccountWhereColumn {
   IsPrimary = 'IS_PRIMARY',
   MemberId = 'MEMBER_ID',
   OwnerId = 'OWNER_ID',
-  PaymentProviderId = 'PAYMENT_PROVIDER_ID'
+  PaymentProviderId = 'PAYMENT_PROVIDER_ID',
 }
 
 /** Allowed column names for Query.accounts.hasClientable. */
 export enum QueryAccountsHasClientableColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Dynamic WHERE conditions for the `hasClientable` argument on the query `accounts`. */
@@ -5111,7 +4902,7 @@ export type QueryAccountsHasClientableWhereHasConditionsRelation = {
 /** Allowed column names for Query.accounts.orderBy. */
 export enum QueryAccountsOrderByColumn {
   ClientId = 'CLIENT_ID',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.accounts.orderBy. */
@@ -5127,7 +4918,7 @@ export enum QueryApplicantBankingAccessOrderByColumn {
   ApplicantCompanyId = 'APPLICANT_COMPANY_ID',
   ApplicantIndividualId = 'APPLICANT_INDIVIDUAL_ID',
   Id = 'ID',
-  MemberId = 'MEMBER_ID'
+  MemberId = 'MEMBER_ID',
 }
 
 /** Order by clause for Query.applicantBankingAccess.orderBy. */
@@ -5142,7 +4933,7 @@ export type QueryApplicantBankingAccessOrderByOrderByClause = {
 export enum QueryApplicantBankingAccessWhereColumn {
   ApplicantCompanyId = 'APPLICANT_COMPANY_ID',
   ApplicantIndividualId = 'APPLICANT_INDIVIDUAL_ID',
-  MemberId = 'MEMBER_ID'
+  MemberId = 'MEMBER_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantBankingAccess`. */
@@ -5176,7 +4967,7 @@ export type QueryApplicantBankingAccessWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantCompanies.hasBusinessType. */
 export enum QueryApplicantCompaniesHasBusinessTypeColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasBusinessType` argument on the query `applicantCompanies`. */
@@ -5210,7 +5001,7 @@ export type QueryApplicantCompaniesHasBusinessTypeWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantCompanies.hasGroupRole. */
 export enum QueryApplicantCompaniesHasGroupRoleColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupRole` argument on the query `applicantCompanies`. */
@@ -5244,7 +5035,7 @@ export type QueryApplicantCompaniesHasGroupRoleWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantCompanies.hasKycLevel. */
 export enum QueryApplicantCompaniesHasKycLevelColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasKycLevel` argument on the query `applicantCompanies`. */
@@ -5278,7 +5069,7 @@ export type QueryApplicantCompaniesHasKycLevelWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantCompanies.hasOwner. */
 export enum QueryApplicantCompaniesHasOwnerColumn {
   Fullname = 'FULLNAME',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Dynamic WHERE conditions for the `hasOwner` argument on the query `applicantCompanies`. */
@@ -5312,7 +5103,7 @@ export type QueryApplicantCompaniesHasOwnerWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantCompanies.hasRiskLevel. */
 export enum QueryApplicantCompaniesHasRiskLevelColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasRiskLevel` argument on the query `applicantCompanies`. */
@@ -5346,7 +5137,7 @@ export type QueryApplicantCompaniesHasRiskLevelWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantCompanies.hasStateReason. */
 export enum QueryApplicantCompaniesHasStateReasonColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasStateReason` argument on the query `applicantCompanies`. */
@@ -5380,7 +5171,7 @@ export type QueryApplicantCompaniesHasStateReasonWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantCompanies.hasStatus. */
 export enum QueryApplicantCompaniesHasStatusColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasStatus` argument on the query `applicantCompanies`. */
@@ -5419,7 +5210,7 @@ export enum QueryApplicantCompaniesOrderByColumn {
   Id = 'ID',
   Name = 'NAME',
   OwnerId = 'OWNER_ID',
-  Url = 'URL'
+  Url = 'URL',
 }
 
 /** Order by clause for Query.applicantCompanies.orderBy. */
@@ -5441,7 +5232,7 @@ export enum QueryApplicantCompaniesWhereColumn {
   GroupId = 'GROUP_ID',
   Id = 'ID',
   Name = 'NAME',
-  Url = 'URL'
+  Url = 'URL',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantCompanies`. */
@@ -5475,7 +5266,7 @@ export type QueryApplicantCompaniesWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantCompanyBusinessType.orderBy. */
 export enum QueryApplicantCompanyBusinessTypeOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantCompanyBusinessType.orderBy. */
@@ -5488,7 +5279,7 @@ export type QueryApplicantCompanyBusinessTypeOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantCompanyBusinessType.where. */
 export enum QueryApplicantCompanyBusinessTypeWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantCompanyBusinessType`. */
@@ -5522,7 +5313,7 @@ export type QueryApplicantCompanyBusinessTypeWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantCompanyLabelsAvailable.orderBy. */
 export enum QueryApplicantCompanyLabelsAvailableOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantCompanyLabelsAvailable.orderBy. */
@@ -5536,7 +5327,7 @@ export type QueryApplicantCompanyLabelsAvailableOrderByOrderByClause = {
 /** Allowed column names for Query.applicantCompanyLabels.orderBy. */
 export enum QueryApplicantCompanyLabelsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantCompanyLabels.orderBy. */
@@ -5549,7 +5340,7 @@ export type QueryApplicantCompanyLabelsOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantCompanyLabels.where. */
 export enum QueryApplicantCompanyLabelsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantCompanyLabels`. */
@@ -5582,7 +5373,7 @@ export type QueryApplicantCompanyLabelsWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.applicantCompanyModules.orderBy. */
 export enum QueryApplicantCompanyModulesOrderByColumn {
-  ApplicantCompanyId = 'APPLICANT_COMPANY_ID'
+  ApplicantCompanyId = 'APPLICANT_COMPANY_ID',
 }
 
 /** Order by clause for Query.applicantCompanyModules.orderBy. */
@@ -5595,7 +5386,7 @@ export type QueryApplicantCompanyModulesOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantCompanyModules.where. */
 export enum QueryApplicantCompanyModulesWhereColumn {
-  ApplicantCompanyId = 'APPLICANT_COMPANY_ID'
+  ApplicantCompanyId = 'APPLICANT_COMPANY_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantCompanyModules`. */
@@ -5629,7 +5420,7 @@ export type QueryApplicantCompanyModulesWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantCompanyNotes.orderBy. */
 export enum QueryApplicantCompanyNotesOrderByColumn {
   CreatedAt = 'CREATED_AT',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.applicantCompanyNotes.orderBy. */
@@ -5642,7 +5433,7 @@ export type QueryApplicantCompanyNotesOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantCompanyRiskLevelHistory.orderBy. */
 export enum QueryApplicantCompanyRiskLevelHistoryOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.applicantCompanyRiskLevelHistory.orderBy. */
@@ -5655,7 +5446,7 @@ export type QueryApplicantCompanyRiskLevelHistoryOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantCompanyRiskLevelHistory.where. */
 export enum QueryApplicantCompanyRiskLevelHistoryWhereColumn {
-  RiskLevelId = 'RISK_LEVEL_ID'
+  RiskLevelId = 'RISK_LEVEL_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantCompanyRiskLevelHistory`. */
@@ -5689,7 +5480,7 @@ export type QueryApplicantCompanyRiskLevelHistoryWhereWhereConditionsRelation = 
 /** Allowed column names for Query.applicantCompanyRiskLevels.orderBy. */
 export enum QueryApplicantCompanyRiskLevelsOrderByColumn {
   CreatedAt = 'CREATED_AT',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.applicantCompanyRiskLevels.orderBy. */
@@ -5703,7 +5494,7 @@ export type QueryApplicantCompanyRiskLevelsOrderByOrderByClause = {
 /** Allowed column names for Query.applicantIndividualCompanyPositions.orderBy. */
 export enum QueryApplicantIndividualCompanyPositionsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantIndividualCompanyPositions.orderBy. */
@@ -5716,7 +5507,7 @@ export type QueryApplicantIndividualCompanyPositionsOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantIndividualCompanyPositions.where. */
 export enum QueryApplicantIndividualCompanyPositionsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantIndividualCompanyPositions`. */
@@ -5750,7 +5541,7 @@ export type QueryApplicantIndividualCompanyPositionsWhereWhereConditionsRelation
 /** Allowed column names for Query.applicantIndividualCompanyRelations.orderBy. */
 export enum QueryApplicantIndividualCompanyRelationsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantIndividualCompanyRelations.orderBy. */
@@ -5763,7 +5554,7 @@ export type QueryApplicantIndividualCompanyRelationsOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantIndividualCompanyRelations.where. */
 export enum QueryApplicantIndividualCompanyRelationsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantIndividualCompanyRelations`. */
@@ -5797,7 +5588,7 @@ export type QueryApplicantIndividualCompanyRelationsWhereWhereConditionsRelation
 /** Allowed column names for Query.applicantIndividualLabelsAvailable.orderBy. */
 export enum QueryApplicantIndividualLabelsAvailableOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantIndividualLabelsAvailable.orderBy. */
@@ -5811,7 +5602,7 @@ export type QueryApplicantIndividualLabelsAvailableOrderByOrderByClause = {
 /** Allowed column names for Query.applicantIndividualLabels.orderBy. */
 export enum QueryApplicantIndividualLabelsOrderByColumn {
   ApplicantId = 'APPLICANT_ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantIndividualLabels.orderBy. */
@@ -5825,7 +5616,7 @@ export type QueryApplicantIndividualLabelsOrderByOrderByClause = {
 /** Allowed column names for Query.applicantIndividualLabels.where. */
 export enum QueryApplicantIndividualLabelsWhereColumn {
   ApplicantId = 'APPLICANT_ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantIndividualLabels`. */
@@ -5858,7 +5649,7 @@ export type QueryApplicantIndividualLabelsWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.applicantIndividualModules.orderBy. */
 export enum QueryApplicantIndividualModulesOrderByColumn {
-  ApplicantIndividualId = 'APPLICANT_INDIVIDUAL_ID'
+  ApplicantIndividualId = 'APPLICANT_INDIVIDUAL_ID',
 }
 
 /** Order by clause for Query.applicantIndividualModules.orderBy. */
@@ -5871,7 +5662,7 @@ export type QueryApplicantIndividualModulesOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantIndividualModules.where. */
 export enum QueryApplicantIndividualModulesWhereColumn {
-  ApplicantIndividualId = 'APPLICANT_INDIVIDUAL_ID'
+  ApplicantIndividualId = 'APPLICANT_INDIVIDUAL_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantIndividualModules`. */
@@ -5905,7 +5696,7 @@ export type QueryApplicantIndividualModulesWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantIndividualNotes.orderBy. */
 export enum QueryApplicantIndividualNotesOrderByColumn {
   CreatedAt = 'CREATED_AT',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.applicantIndividualNotes.orderBy. */
@@ -5919,7 +5710,7 @@ export type QueryApplicantIndividualNotesOrderByOrderByClause = {
 /** Allowed column names for Query.applicantIndividualRiskLevels.orderBy. */
 export enum QueryApplicantIndividualRiskLevelsOrderByColumn {
   CreatedAt = 'CREATED_AT',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.applicantIndividualRiskLevels.orderBy. */
@@ -5934,7 +5725,7 @@ export type QueryApplicantIndividualRiskLevelsOrderByOrderByClause = {
 export enum QueryApplicantIndividualsHasGroupRoleColumn {
   GroupTypeId = 'GROUP_TYPE_ID',
   Id = 'ID',
-  RoleId = 'ROLE_ID'
+  RoleId = 'ROLE_ID',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupRole` argument on the query `applicantIndividuals`. */
@@ -5968,7 +5759,7 @@ export type QueryApplicantIndividualsHasGroupRoleWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantIndividuals.hasRiskLevel. */
 export enum QueryApplicantIndividualsHasRiskLevelColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasRiskLevel` argument on the query `applicantIndividuals`. */
@@ -6002,7 +5793,7 @@ export type QueryApplicantIndividualsHasRiskLevelWhereHasConditionsRelation = {
 /** Allowed column names for Query.applicantIndividuals.hasStateReason. */
 export enum QueryApplicantIndividualsHasStateReasonColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasStateReason` argument on the query `applicantIndividuals`. */
@@ -6036,7 +5827,7 @@ export type QueryApplicantIndividualsHasStateReasonWhereHasConditionsRelation = 
 /** Allowed column names for Query.applicantIndividuals.hasStatus. */
 export enum QueryApplicantIndividualsHasStatusColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasStatus` argument on the query `applicantIndividuals`. */
@@ -6075,7 +5866,7 @@ export enum QueryApplicantIndividualsOrderByColumn {
   FirstName = 'FIRST_NAME',
   Fullname = 'FULLNAME',
   Id = 'ID',
-  LastName = 'LAST_NAME'
+  LastName = 'LAST_NAME',
 }
 
 /** Order by clause for Query.applicantIndividuals.orderBy. */
@@ -6095,7 +5886,7 @@ export enum QueryApplicantIndividualsWhereColumn {
   Fullname = 'FULLNAME',
   GroupId = 'GROUP_ID',
   Id = 'ID',
-  LastName = 'LAST_NAME'
+  LastName = 'LAST_NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantIndividuals`. */
@@ -6129,7 +5920,7 @@ export type QueryApplicantIndividualsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantKycLevels.orderBy. */
 export enum QueryApplicantKycLevelsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantKycLevels.orderBy. */
@@ -6142,7 +5933,7 @@ export type QueryApplicantKycLevelsOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantKycLevels.where. */
 export enum QueryApplicantKycLevelsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantKycLevels`. */
@@ -6175,7 +5966,7 @@ export type QueryApplicantKycLevelsWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.applicant_modules.orderBy. */
 export enum QueryApplicantModulesOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.applicant_modules.orderBy. */
@@ -6188,7 +5979,7 @@ export type QueryApplicantModulesOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicant_modules.where. */
 export enum QueryApplicantModulesWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicant_modules`. */
@@ -6221,7 +6012,7 @@ export type QueryApplicantModulesWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.applicantRiskLevelHistory.orderBy. */
 export enum QueryApplicantRiskLevelHistoryOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.applicantRiskLevelHistory.orderBy. */
@@ -6234,7 +6025,7 @@ export type QueryApplicantRiskLevelHistoryOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantRiskLevelHistory.where. */
 export enum QueryApplicantRiskLevelHistoryWhereColumn {
-  RiskLevelId = 'RISK_LEVEL_ID'
+  RiskLevelId = 'RISK_LEVEL_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantRiskLevelHistory`. */
@@ -6268,7 +6059,7 @@ export type QueryApplicantRiskLevelHistoryWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantRiskLevels.orderBy. */
 export enum QueryApplicantRiskLevelsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantRiskLevels.orderBy. */
@@ -6281,7 +6072,7 @@ export type QueryApplicantRiskLevelsOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantRiskLevels.where. */
 export enum QueryApplicantRiskLevelsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantRiskLevels`. */
@@ -6315,7 +6106,7 @@ export type QueryApplicantRiskLevelsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantStateReasons.orderBy. */
 export enum QueryApplicantStateReasonsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantStateReasons.orderBy. */
@@ -6328,7 +6119,7 @@ export type QueryApplicantStateReasonsOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantStateReasons.where. */
 export enum QueryApplicantStateReasonsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantStateReasons`. */
@@ -6362,7 +6153,7 @@ export type QueryApplicantStateReasonsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantStates.orderBy. */
 export enum QueryApplicantStatesOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantStates.orderBy. */
@@ -6375,7 +6166,7 @@ export type QueryApplicantStatesOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantStates.where. */
 export enum QueryApplicantStatesWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantStates`. */
@@ -6409,7 +6200,7 @@ export type QueryApplicantStatesWhereWhereConditionsRelation = {
 /** Allowed column names for Query.applicantStatuses.orderBy. */
 export enum QueryApplicantStatusesOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.applicantStatuses.orderBy. */
@@ -6422,7 +6213,7 @@ export type QueryApplicantStatusesOrderByOrderByClause = {
 
 /** Allowed column names for Query.applicantStatuses.where. */
 export enum QueryApplicantStatusesWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `applicantStatuses`. */
@@ -6456,7 +6247,7 @@ export type QueryApplicantStatusesWhereWhereConditionsRelation = {
 /** Allowed column names for Query.businessActivities.orderBy. */
 export enum QueryBusinessActivitiesOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.businessActivities.orderBy. */
@@ -6469,7 +6260,7 @@ export type QueryBusinessActivitiesOrderByOrderByClause = {
 
 /** Allowed column names for Query.businessActivities.where. */
 export enum QueryBusinessActivitiesWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `businessActivities`. */
@@ -6502,7 +6293,7 @@ export type QueryBusinessActivitiesWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.commissionPriceLists.hasAccount. */
 export enum QueryCommissionPriceListsHasAccountColumn {
-  AccountNumber = 'ACCOUNT_NUMBER'
+  AccountNumber = 'ACCOUNT_NUMBER',
 }
 
 /** Dynamic WHERE conditions for the `hasAccount` argument on the query `commissionPriceLists`. */
@@ -6536,17 +6327,21 @@ export type QueryCommissionPriceListsHasAccountWhereHasConditionsRelation = {
 /** Allowed column names for Query.commissionPriceLists.hasCommissionTemplate. */
 export enum QueryCommissionPriceListsHasCommissionTemplateColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCommissionTemplate` argument on the query `commissionPriceLists`. */
 export type QueryCommissionPriceListsHasCommissionTemplateWhereHasConditions = {
   /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryCommissionPriceListsHasCommissionTemplateWhereHasConditions>>;
+  AND?: InputMaybe<
+    Array<QueryCommissionPriceListsHasCommissionTemplateWhereHasConditions>
+  >;
   /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
   HAS?: InputMaybe<QueryCommissionPriceListsHasCommissionTemplateWhereHasConditionsRelation>;
   /** A set of conditions that requires at least one condition to match. */
-  OR?: InputMaybe<Array<QueryCommissionPriceListsHasCommissionTemplateWhereHasConditions>>;
+  OR?: InputMaybe<
+    Array<QueryCommissionPriceListsHasCommissionTemplateWhereHasConditions>
+  >;
   /** The column that is used for the condition. */
   column?: InputMaybe<QueryCommissionPriceListsHasCommissionTemplateColumn>;
   /** The operator that is used for the condition. */
@@ -6570,7 +6365,7 @@ export type QueryCommissionPriceListsHasCommissionTemplateWhereHasConditionsRela
 /** Allowed column names for Query.commissionPriceLists.hasCompany. */
 export enum QueryCommissionPriceListsHasCompanyColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCompany` argument on the query `commissionPriceLists`. */
@@ -6604,7 +6399,7 @@ export type QueryCommissionPriceListsHasCompanyWhereHasConditionsRelation = {
 /** Allowed column names for Query.commissionPriceLists.hasOwner. */
 export enum QueryCommissionPriceListsHasOwnerColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasOwner` argument on the query `commissionPriceLists`. */
@@ -6638,7 +6433,7 @@ export type QueryCommissionPriceListsHasOwnerWhereHasConditionsRelation = {
 /** Allowed column names for Query.commissionPriceLists.hasPaymentProvider. */
 export enum QueryCommissionPriceListsHasPaymentProviderColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentProvider` argument on the query `commissionPriceLists`. */
@@ -6672,7 +6467,7 @@ export type QueryCommissionPriceListsHasPaymentProviderWhereHasConditionsRelatio
 /** Allowed column names for Query.commissionPriceLists.hasPaymentSystem. */
 export enum QueryCommissionPriceListsHasPaymentSystemColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentSystem` argument on the query `commissionPriceLists`. */
@@ -6706,7 +6501,7 @@ export type QueryCommissionPriceListsHasPaymentSystemWhereHasConditionsRelation 
 /** Allowed column names for Query.commissionPriceLists.orderBy. */
 export enum QueryCommissionPriceListsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.commissionPriceLists.orderBy. */
@@ -6722,7 +6517,7 @@ export enum QueryCommissionPriceListsWhereColumn {
   CommissionTemplateId = 'COMMISSION_TEMPLATE_ID',
   Name = 'NAME',
   PaymentSystemId = 'PAYMENT_SYSTEM_ID',
-  ProviderId = 'PROVIDER_ID'
+  ProviderId = 'PROVIDER_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `commissionPriceLists`. */
@@ -6756,7 +6551,7 @@ export type QueryCommissionPriceListsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.commissionTemplateLimitActionType.orderBy. */
 export enum QueryCommissionTemplateLimitActionTypeOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.commissionTemplateLimitActionType.orderBy. */
@@ -6769,7 +6564,7 @@ export type QueryCommissionTemplateLimitActionTypeOrderByOrderByClause = {
 
 /** Allowed column names for Query.commissionTemplateLimitActionType.where. */
 export enum QueryCommissionTemplateLimitActionTypeWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `commissionTemplateLimitActionType`. */
@@ -6803,7 +6598,7 @@ export type QueryCommissionTemplateLimitActionTypeWhereWhereConditionsRelation =
 /** Allowed column names for Query.commissionTemplateLimitPeriods.orderBy. */
 export enum QueryCommissionTemplateLimitPeriodsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.commissionTemplateLimitPeriods.orderBy. */
@@ -6816,7 +6611,7 @@ export type QueryCommissionTemplateLimitPeriodsOrderByOrderByClause = {
 
 /** Allowed column names for Query.commissionTemplateLimitPeriods.where. */
 export enum QueryCommissionTemplateLimitPeriodsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `commissionTemplateLimitPeriods`. */
@@ -6850,7 +6645,7 @@ export type QueryCommissionTemplateLimitPeriodsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.commissionTemplateLimitTransferDirections.orderBy. */
 export enum QueryCommissionTemplateLimitTransferDirectionsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.commissionTemplateLimitTransferDirections.orderBy. */
@@ -6863,17 +6658,21 @@ export type QueryCommissionTemplateLimitTransferDirectionsOrderByOrderByClause =
 
 /** Allowed column names for Query.commissionTemplateLimitTransferDirections.where. */
 export enum QueryCommissionTemplateLimitTransferDirectionsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `commissionTemplateLimitTransferDirections`. */
 export type QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditions = {
   /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditions>>;
+  AND?: InputMaybe<
+    Array<QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditions>
+  >;
   /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
   HAS?: InputMaybe<QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditionsRelation>;
   /** A set of conditions that requires at least one condition to match. */
-  OR?: InputMaybe<Array<QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditions>>;
+  OR?: InputMaybe<
+    Array<QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditions>
+  >;
   /** The column that is used for the condition. */
   column?: InputMaybe<QueryCommissionTemplateLimitTransferDirectionsWhereColumn>;
   /** The operator that is used for the condition. */
@@ -6897,7 +6696,7 @@ export type QueryCommissionTemplateLimitTransferDirectionsWhereWhereConditionsRe
 /** Allowed column names for Query.commissionTemplateLimitTypes.orderBy. */
 export enum QueryCommissionTemplateLimitTypesOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.commissionTemplateLimitTypes.orderBy. */
@@ -6910,7 +6709,7 @@ export type QueryCommissionTemplateLimitTypesOrderByOrderByClause = {
 
 /** Allowed column names for Query.commissionTemplateLimitTypes.where. */
 export enum QueryCommissionTemplateLimitTypesWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `commissionTemplateLimitTypes`. */
@@ -6943,7 +6742,7 @@ export type QueryCommissionTemplateLimitTypesWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.commissionTemplates.hasAccount. */
 export enum QueryCommissionTemplatesHasAccountColumn {
-  AccountName = 'ACCOUNT_NAME'
+  AccountName = 'ACCOUNT_NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasAccount` argument on the query `commissionTemplates`. */
@@ -6977,7 +6776,7 @@ export type QueryCommissionTemplatesHasAccountWhereHasConditionsRelation = {
 /** Allowed column names for Query.commissionTemplates.hasBusinessActivity. */
 export enum QueryCommissionTemplatesHasBusinessActivityColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasBusinessActivity` argument on the query `commissionTemplates`. */
@@ -7010,7 +6809,7 @@ export type QueryCommissionTemplatesHasBusinessActivityWhereHasConditionsRelatio
 
 /** Allowed column names for Query.commissionTemplates.hasCompany. */
 export enum QueryCommissionTemplatesHasCompanyColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCompany` argument on the query `commissionTemplates`. */
@@ -7043,7 +6842,7 @@ export type QueryCommissionTemplatesHasCompanyWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.commissionTemplates.hasOwner. */
 export enum QueryCommissionTemplatesHasOwnerColumn {
-  Fullname = 'FULLNAME'
+  Fullname = 'FULLNAME',
 }
 
 /** Dynamic WHERE conditions for the `hasOwner` argument on the query `commissionTemplates`. */
@@ -7077,7 +6876,7 @@ export type QueryCommissionTemplatesHasOwnerWhereHasConditionsRelation = {
 /** Allowed column names for Query.commissionTemplates.hasPaymentProvider. */
 export enum QueryCommissionTemplatesHasPaymentProviderColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentProvider` argument on the query `commissionTemplates`. */
@@ -7113,7 +6912,7 @@ export enum QueryCommissionTemplatesOrderByColumn {
   Description = 'DESCRIPTION',
   Id = 'ID',
   IsActive = 'IS_ACTIVE',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.commissionTemplates.orderBy. */
@@ -7128,7 +6927,7 @@ export type QueryCommissionTemplatesOrderByOrderByClause = {
 export enum QueryCommissionTemplatesWhereColumn {
   Id = 'ID',
   IsActive = 'IS_ACTIVE',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `commissionTemplates`. */
@@ -7165,7 +6964,7 @@ export enum QueryCompaniesOrderByColumn {
   Email = 'EMAIL',
   Id = 'ID',
   Name = 'NAME',
-  Url = 'URL'
+  Url = 'URL',
 }
 
 /** Order by clause for Query.companies.orderBy. */
@@ -7181,7 +6980,7 @@ export enum QueryCompaniesWhereColumn {
   CreatedAt = 'CREATED_AT',
   Email = 'EMAIL',
   Name = 'NAME',
-  Url = 'URL'
+  Url = 'URL',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `companies`. */
@@ -7214,7 +7013,7 @@ export type QueryCompaniesWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.departmentPositions.hasDepartment. */
 export enum QueryDepartmentPositionsHasDepartmentColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Dynamic WHERE conditions for the `hasDepartment` argument on the query `departmentPositions`. */
@@ -7249,7 +7048,7 @@ export type QueryDepartmentPositionsHasDepartmentWhereHasConditionsRelation = {
 export enum QueryDepartmentPositionsOrderByColumn {
   Id = 'ID',
   IsActive = 'IS_ACTIVE',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.departmentPositions.orderBy. */
@@ -7263,7 +7062,7 @@ export type QueryDepartmentPositionsOrderByOrderByClause = {
 /** Allowed column names for Query.departmentPositions.where. */
 export enum QueryDepartmentPositionsWhereColumn {
   IsActive = 'IS_ACTIVE',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `departmentPositions`. */
@@ -7296,7 +7095,7 @@ export type QueryDepartmentPositionsWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.departments.hasCompany. */
 export enum QueryDepartmentsHasCompanyColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Dynamic WHERE conditions for the `hasCompany` argument on the query `departments`. */
@@ -7330,7 +7129,7 @@ export type QueryDepartmentsHasCompanyWhereHasConditionsRelation = {
 /** Allowed column names for Query.departments.orderBy. */
 export enum QueryDepartmentsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.departments.orderBy. */
@@ -7343,7 +7142,7 @@ export type QueryDepartmentsOrderByOrderByClause = {
 
 /** Allowed column names for Query.departments.where. */
 export enum QueryDepartmentsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `departments`. */
@@ -7377,7 +7176,7 @@ export type QueryDepartmentsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.emailNotifications.hasApplicantCompany. */
 export enum QueryEmailNotificationsHasApplicantCompanyColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasApplicantCompany` argument on the query `emailNotifications`. */
@@ -7411,13 +7210,15 @@ export type QueryEmailNotificationsHasApplicantCompanyWhereHasConditionsRelation
 /** Allowed column names for Query.emailNotifications.hasApplicantIndividual. */
 export enum QueryEmailNotificationsHasApplicantIndividualColumn {
   Fullname = 'FULLNAME',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Dynamic WHERE conditions for the `hasApplicantIndividual` argument on the query `emailNotifications`. */
 export type QueryEmailNotificationsHasApplicantIndividualWhereHasConditions = {
   /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryEmailNotificationsHasApplicantIndividualWhereHasConditions>>;
+  AND?: InputMaybe<
+    Array<QueryEmailNotificationsHasApplicantIndividualWhereHasConditions>
+  >;
   /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
   HAS?: InputMaybe<QueryEmailNotificationsHasApplicantIndividualWhereHasConditionsRelation>;
   /** A set of conditions that requires at least one condition to match. */
@@ -7445,7 +7246,7 @@ export type QueryEmailNotificationsHasApplicantIndividualWhereHasConditionsRelat
 /** Allowed column names for Query.emailNotifications.hasGroupRole. */
 export enum QueryEmailNotificationsHasGroupRoleColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupRole` argument on the query `emailNotifications`. */
@@ -7479,7 +7280,7 @@ export type QueryEmailNotificationsHasGroupRoleWhereHasConditionsRelation = {
 /** Allowed column names for Query.emailNotifications.hasGroupType. */
 export enum QueryEmailNotificationsHasGroupTypeColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupType` argument on the query `emailNotifications`. */
@@ -7513,7 +7314,7 @@ export type QueryEmailNotificationsHasGroupTypeWhereHasConditionsRelation = {
 /** Allowed column names for Query.emailNotifications.hasMember. */
 export enum QueryEmailNotificationsHasMemberColumn {
   Fullname = 'FULLNAME',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Dynamic WHERE conditions for the `hasMember` argument on the query `emailNotifications`. */
@@ -7546,7 +7347,7 @@ export type QueryEmailNotificationsHasMemberWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.emailNotifications.hasTemplates. */
 export enum QueryEmailNotificationsHasTemplatesColumn {
-  Subject = 'SUBJECT'
+  Subject = 'SUBJECT',
 }
 
 /** Dynamic WHERE conditions for the `hasTemplates` argument on the query `emailNotifications`. */
@@ -7579,7 +7380,7 @@ export type QueryEmailNotificationsHasTemplatesWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.emailNotifications.orderBy. */
 export enum QueryEmailNotificationsOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.emailNotifications.orderBy. */
@@ -7595,7 +7396,7 @@ export enum QueryEmailNotificationsWhereColumn {
   CompanyId = 'COMPANY_ID',
   GroupType = 'GROUP_TYPE',
   RecipientType = 'RECIPIENT_TYPE',
-  Type = 'TYPE'
+  Type = 'TYPE',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `emailNotifications`. */
@@ -7629,7 +7430,7 @@ export type QueryEmailNotificationsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.emailSmtps.orderBy. */
 export enum QueryEmailSmtpsOrderByColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.emailSmtps.orderBy. */
@@ -7642,7 +7443,7 @@ export type QueryEmailSmtpsOrderByOrderByClause = {
 
 /** Allowed column names for Query.emailTemplates.hasCompany. */
 export enum QueryEmailTemplatesHasCompanyColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCompany` argument on the query `emailTemplates`. */
@@ -7675,7 +7476,7 @@ export type QueryEmailTemplatesHasCompanyWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.emailTemplates.orderBy. */
 export enum QueryEmailTemplatesOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.emailTemplates.orderBy. */
@@ -7691,7 +7492,7 @@ export enum QueryEmailTemplatesWhereColumn {
   CompanyId = 'COMPANY_ID',
   Name = 'NAME',
   ServiceType = 'SERVICE_TYPE',
-  Type = 'TYPE'
+  Type = 'TYPE',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `emailTemplates`. */
@@ -7725,7 +7526,7 @@ export type QueryEmailTemplatesWhereWhereConditionsRelation = {
 /** Allowed column names for Query.files.orderBy. */
 export enum QueryFilesOrderByColumn {
   AuthorId = 'AUTHOR_ID',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.files.orderBy. */
@@ -7739,7 +7540,7 @@ export type QueryFilesOrderByOrderByClause = {
 /** Allowed column names for Query.files.where. */
 export enum QueryFilesWhereColumn {
   AuthorId = 'AUTHOR_ID',
-  EntityType = 'ENTITY_TYPE'
+  EntityType = 'ENTITY_TYPE',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `files`. */
@@ -7772,7 +7573,7 @@ export type QueryFilesWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.getMatchedUsers.orderBy. */
 export enum QueryGetMatchedUsersOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.getMatchedUsers.orderBy. */
@@ -7798,7 +7599,7 @@ export type QueryGroupCondition = {
 export enum QueryGroupListOrderByColumn {
   Id = 'ID',
   IsActive = 'IS_ACTIVE',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.groupList.orderBy. */
@@ -7812,7 +7613,7 @@ export type QueryGroupListOrderByOrderByClause = {
 /** Allowed column names for Query.groups.hasCommissionTemplate. */
 export enum QueryGroupsHasCommissionTemplateColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCommissionTemplate` argument on the query `groups`. */
@@ -7846,7 +7647,7 @@ export type QueryGroupsHasCommissionTemplateWhereHasConditionsRelation = {
 /** Allowed column names for Query.groups.hasGroupType. */
 export enum QueryGroupsHasGroupTypeColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupType` argument on the query `groups`. */
@@ -7880,7 +7681,7 @@ export type QueryGroupsHasGroupTypeWhereHasConditionsRelation = {
 /** Allowed column names for Query.groups.hasPaymentProvider. */
 export enum QueryGroupsHasPaymentProviderColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentProvider` argument on the query `groups`. */
@@ -7914,7 +7715,7 @@ export type QueryGroupsHasPaymentProviderWhereHasConditionsRelation = {
 /** Allowed column names for Query.groups.hasRole. */
 export enum QueryGroupsHasRoleColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasRole` argument on the query `groups`. */
@@ -7949,7 +7750,7 @@ export type QueryGroupsHasRoleWhereHasConditionsRelation = {
 export enum QueryGroupsOrderByColumn {
   Description = 'DESCRIPTION',
   Id = 'ID',
-  IsActive = 'IS_ACTIVE'
+  IsActive = 'IS_ACTIVE',
 }
 
 /** Order by clause for Query.groups.orderBy. */
@@ -7969,7 +7770,7 @@ export enum QueryGroupsWhereColumn {
   IsActive = 'IS_ACTIVE',
   Name = 'NAME',
   PaymentProviderId = 'PAYMENT_PROVIDER_ID',
-  RoleId = 'ROLE_ID'
+  RoleId = 'ROLE_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `groups`. */
@@ -8003,17 +7804,21 @@ export type QueryGroupsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.memberAccessLimitations.hasCommissionTemplate. */
 export enum QueryMemberAccessLimitationsHasCommissionTemplateColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCommissionTemplate` argument on the query `memberAccessLimitations`. */
 export type QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions = {
   /** A set of conditions that requires all conditions to match. */
-  AND?: InputMaybe<Array<QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions>>;
+  AND?: InputMaybe<
+    Array<QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions>
+  >;
   /** Check whether a relation exists. Extra conditions or a minimum amount can be applied. */
   HAS?: InputMaybe<QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditionsRelation>;
   /** A set of conditions that requires at least one condition to match. */
-  OR?: InputMaybe<Array<QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions>>;
+  OR?: InputMaybe<
+    Array<QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions>
+  >;
   /** The column that is used for the condition. */
   column?: InputMaybe<QueryMemberAccessLimitationsHasCommissionTemplateColumn>;
   /** The operator that is used for the condition. */
@@ -8023,27 +7828,28 @@ export type QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions 
 };
 
 /** Dynamic HAS conditions for WHERE conditions for the `hasCommissionTemplate` argument on the query `memberAccessLimitations`. */
-export type QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditionsRelation = {
-  /** The amount to test. */
-  amount?: InputMaybe<Scalars['Int']>;
-  /** Additional condition logic. */
-  condition?: InputMaybe<QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions>;
-  /** The comparison operator to test against the amount. */
-  operator?: InputMaybe<SqlOperator>;
-  /** The relation that is checked. */
-  relation: Scalars['String'];
-};
+export type QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditionsRelation =
+  {
+    /** The amount to test. */
+    amount?: InputMaybe<Scalars['Int']>;
+    /** Additional condition logic. */
+    condition?: InputMaybe<QueryMemberAccessLimitationsHasCommissionTemplateWhereHasConditions>;
+    /** The comparison operator to test against the amount. */
+    operator?: InputMaybe<SqlOperator>;
+    /** The relation that is checked. */
+    relation: Scalars['String'];
+  };
 
 /** Allowed column names for Query.memberAccessLimitations.hasGroup. */
 export enum QueryMemberAccessLimitationsHasGroupColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Allowed column names for Query.memberAccessLimitations.hasGroupRole. */
 export enum QueryMemberAccessLimitationsHasGroupRoleColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupRole` argument on the query `memberAccessLimitations`. */
@@ -8105,7 +7911,7 @@ export type QueryMemberAccessLimitationsHasGroupWhereHasConditionsRelation = {
 /** Allowed column names for Query.memberAccessLimitations.hasProvider. */
 export enum QueryMemberAccessLimitationsHasProviderColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasProvider` argument on the query `memberAccessLimitations`. */
@@ -8138,7 +7944,7 @@ export type QueryMemberAccessLimitationsHasProviderWhereHasConditionsRelation = 
 
 /** Allowed column names for Query.memberAccessLimitations.orderBy. */
 export enum QueryMemberAccessLimitationsOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.memberAccessLimitations.orderBy. */
@@ -8154,7 +7960,7 @@ export enum QueryMemberAccessLimitationsWhereColumn {
   GroupRoleId = 'GROUP_ROLE_ID',
   Id = 'ID',
   MemberId = 'MEMBER_ID',
-  ProviderId = 'PROVIDER_ID'
+  ProviderId = 'PROVIDER_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `memberAccessLimitations`. */
@@ -8187,7 +7993,7 @@ export type QueryMemberAccessLimitationsWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.members.hasDepartment. */
 export enum QueryMembersHasDepartmentColumn {
-  DepartmentId = 'DEPARTMENT_ID'
+  DepartmentId = 'DEPARTMENT_ID',
 }
 
 /** Dynamic WHERE conditions for the `hasDepartment` argument on the query `members`. */
@@ -8222,7 +8028,7 @@ export type QueryMembersHasDepartmentWhereHasConditionsRelation = {
 export enum QueryMembersHasGroupRoleColumn {
   GroupTypeId = 'GROUP_TYPE_ID',
   Id = 'ID',
-  RoleId = 'ROLE_ID'
+  RoleId = 'ROLE_ID',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupRole` argument on the query `members`. */
@@ -8258,7 +8064,7 @@ export enum QueryMembersOrderByColumn {
   Email = 'EMAIL',
   Id = 'ID',
   IsActive = 'IS_ACTIVE',
-  LastLoginAt = 'LAST_LOGIN_AT'
+  LastLoginAt = 'LAST_LOGIN_AT',
 }
 
 /** Order by clause for Query.members.orderBy. */
@@ -8299,7 +8105,7 @@ export type QueryMembersWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.operationTypes.where. */
 export enum QueryOperationTypesWhereColumn {
-  FeeTypeId = 'FEE_TYPE_ID'
+  FeeTypeId = 'FEE_TYPE_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `operationTypes`. */
@@ -8335,7 +8141,7 @@ export enum QueryOwnersOrderByColumn {
   CreatedAt = 'CREATED_AT',
   Email = 'EMAIL',
   Fullname = 'FULLNAME',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.owners.orderBy. */
@@ -8349,7 +8155,7 @@ export type QueryOwnersOrderByOrderByClause = {
 /** Allowed column names for Query.paymentProviders.hasPaymentSystems. */
 export enum QueryPaymentProvidersHasPaymentSystemsColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentSystems` argument on the query `paymentProviders`. */
@@ -8384,7 +8190,7 @@ export type QueryPaymentProvidersHasPaymentSystemsWhereHasConditionsRelation = {
 export enum QueryPaymentProvidersOrderByColumn {
   Id = 'ID',
   IsActive = 'IS_ACTIVE',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.paymentProviders.orderBy. */
@@ -8398,7 +8204,7 @@ export type QueryPaymentProvidersOrderByOrderByClause = {
 /** Allowed column names for Query.paymentProviders.where. */
 export enum QueryPaymentProvidersWhereColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `paymentProviders`. */
@@ -8432,7 +8238,7 @@ export type QueryPaymentProvidersWhereWhereConditionsRelation = {
 /** Allowed column names for Query.paymentSystems.hasCountries. */
 export enum QueryPaymentSystemsHasCountriesColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCountries` argument on the query `paymentSystems`. */
@@ -8466,7 +8272,7 @@ export type QueryPaymentSystemsHasCountriesWhereHasConditionsRelation = {
 /** Allowed column names for Query.paymentSystems.hasCurrencies. */
 export enum QueryPaymentSystemsHasCurrenciesColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCurrencies` argument on the query `paymentSystems`. */
@@ -8500,7 +8306,7 @@ export type QueryPaymentSystemsHasCurrenciesWhereHasConditionsRelation = {
 /** Allowed column names for Query.paymentSystems.hasProviders. */
 export enum QueryPaymentSystemsHasProvidersColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasProviders` argument on the query `paymentSystems`. */
@@ -8535,7 +8341,7 @@ export type QueryPaymentSystemsHasProvidersWhereHasConditionsRelation = {
 export enum QueryPaymentSystemsOrderByColumn {
   Id = 'ID',
   IsActive = 'IS_ACTIVE',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.paymentSystems.orderBy. */
@@ -8548,7 +8354,7 @@ export type QueryPaymentSystemsOrderByOrderByClause = {
 
 /** Allowed column names for Query.paymentSystems.where. */
 export enum QueryPaymentSystemsWhereColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `paymentSystems`. */
@@ -8581,7 +8387,7 @@ export type QueryPaymentSystemsWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.payments.hasAccounts. */
 export enum QueryPaymentsHasAccountsColumn {
-  AccountId = 'ACCOUNT_ID'
+  AccountId = 'ACCOUNT_ID',
 }
 
 /** Dynamic WHERE conditions for the `hasAccounts` argument on the query `payments`. */
@@ -8614,7 +8420,7 @@ export type QueryPaymentsHasAccountsWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.payments.hasCompanies. */
 export enum QueryPaymentsHasCompaniesColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCompanies` argument on the query `payments`. */
@@ -8647,7 +8453,7 @@ export type QueryPaymentsHasCompaniesWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.payments.hasOwner. */
 export enum QueryPaymentsHasOwnerColumn {
-  Fullname = 'FULLNAME'
+  Fullname = 'FULLNAME',
 }
 
 /** Dynamic WHERE conditions for the `hasOwner` argument on the query `payments`. */
@@ -8680,7 +8486,7 @@ export type QueryPaymentsHasOwnerWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.payments.hasPaymentOperation. */
 export enum QueryPaymentsHasPaymentOperationColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentOperation` argument on the query `payments`. */
@@ -8713,7 +8519,7 @@ export type QueryPaymentsHasPaymentOperationWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.payments.hasPaymentProvider. */
 export enum QueryPaymentsHasPaymentProviderColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentProvider` argument on the query `payments`. */
@@ -8746,7 +8552,7 @@ export type QueryPaymentsHasPaymentProviderWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.payments.hasPaymentStatus. */
 export enum QueryPaymentsHasPaymentStatusColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentStatus` argument on the query `payments`. */
@@ -8779,7 +8585,7 @@ export type QueryPaymentsHasPaymentStatusWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.payments.hasPaymentUrgency. */
 export enum QueryPaymentsHasPaymentUrgencyColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPaymentUrgency` argument on the query `payments`. */
@@ -8816,7 +8622,7 @@ export enum QueryPaymentsOrderByColumn {
   CreatedAt = 'CREATED_AT',
   Fee = 'FEE',
   Id = 'ID',
-  PaymentNumber = 'PAYMENT_NUMBER'
+  PaymentNumber = 'PAYMENT_NUMBER',
 }
 
 /** Order by clause for Query.payments.orderBy. */
@@ -8837,7 +8643,7 @@ export enum QueryPaymentsWhereColumn {
   SenderName = 'SENDER_NAME',
   Status = 'STATUS',
   TypeId = 'TYPE_ID',
-  UrgencyId = 'URGENCY_ID'
+  UrgencyId = 'URGENCY_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `payments`. */
@@ -8871,7 +8677,7 @@ export type QueryPaymentsWhereWhereConditionsRelation = {
 /** Allowed column names for Query.permissions.where. */
 export enum QueryPermissionsWhereColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `permissions`. */
@@ -8904,7 +8710,7 @@ export type QueryPermissionsWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.priceListFees.hasList. */
 export enum QueryPriceListFeesHasListColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasList` argument on the query `priceListFees`. */
@@ -8940,7 +8746,7 @@ export enum QueryPriceListFeesWhereColumn {
   Name = 'NAME',
   OperationTypeId = 'OPERATION_TYPE_ID',
   PeriodId = 'PERIOD_ID',
-  TypeId = 'TYPE_ID'
+  TypeId = 'TYPE_ID',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `priceListFees`. */
@@ -8973,7 +8779,7 @@ export type QueryPriceListFeesWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.requisites.orderBy. */
 export enum QueryRequisitesOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.requisites.orderBy. */
@@ -8988,7 +8794,7 @@ export type QueryRequisitesOrderByOrderByClause = {
 export enum QueryRequisitesWhereColumn {
   AccountId = 'ACCOUNT_ID',
   AccountNo = 'ACCOUNT_NO',
-  BankName = 'BANK_NAME'
+  BankName = 'BANK_NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `requisites`. */
@@ -9022,7 +8828,7 @@ export type QueryRequisitesWhereWhereConditionsRelation = {
 /** Allowed column names for Query.roles.hasGroupTypes. */
 export enum QueryRolesHasGroupTypesColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasGroupTypes` argument on the query `roles`. */
@@ -9056,7 +8862,7 @@ export type QueryRolesHasGroupTypesWhereHasConditionsRelation = {
 /** Allowed column names for Query.roles.hasGroups. */
 export enum QueryRolesHasGroupsColumn {
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasGroups` argument on the query `roles`. */
@@ -9091,7 +8897,7 @@ export type QueryRolesHasGroupsWhereHasConditionsRelation = {
 export enum QueryRolesOrderByColumn {
   Description = 'DESCRIPTION',
   Id = 'ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Order by clause for Query.roles.orderBy. */
@@ -9106,7 +8912,7 @@ export type QueryRolesOrderByOrderByClause = {
 export enum QueryRolesWhereColumn {
   CompanyId = 'COMPANY_ID',
   GroupTypeId = 'GROUP_TYPE_ID',
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `roles`. */
@@ -9139,7 +8945,7 @@ export type QueryRolesWhereWhereConditionsRelation = {
 
 /** Allowed column names for Query.tickets.hasClient. */
 export enum QueryTicketsHasClientColumn {
-  Fullname = 'FULLNAME'
+  Fullname = 'FULLNAME',
 }
 
 /** Dynamic WHERE conditions for the `hasClient` argument on the query `tickets`. */
@@ -9172,7 +8978,7 @@ export type QueryTicketsHasClientWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.tickets.hasCompany. */
 export enum QueryTicketsHasCompanyColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasCompany` argument on the query `tickets`. */
@@ -9205,7 +9011,7 @@ export type QueryTicketsHasCompanyWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.tickets.hasDepartment. */
 export enum QueryTicketsHasDepartmentColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasDepartment` argument on the query `tickets`. */
@@ -9238,7 +9044,7 @@ export type QueryTicketsHasDepartmentWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.tickets.hasMember. */
 export enum QueryTicketsHasMemberColumn {
-  Fullname = 'FULLNAME'
+  Fullname = 'FULLNAME',
 }
 
 /** Dynamic WHERE conditions for the `hasMember` argument on the query `tickets`. */
@@ -9271,7 +9077,7 @@ export type QueryTicketsHasMemberWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.tickets.hasPosition. */
 export enum QueryTicketsHasPositionColumn {
-  Name = 'NAME'
+  Name = 'NAME',
 }
 
 /** Dynamic WHERE conditions for the `hasPosition` argument on the query `tickets`. */
@@ -9304,7 +9110,7 @@ export type QueryTicketsHasPositionWhereHasConditionsRelation = {
 
 /** Allowed column names for Query.tickets.orderBy. */
 export enum QueryTicketsOrderByColumn {
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Aggregate specification for Query.tickets.orderBy.company. */
@@ -9334,7 +9140,7 @@ export type QueryTicketsOrderByRelationOrderByClause = {
 /** Allowed column names for Query.tickets.where. */
 export enum QueryTicketsWhereColumn {
   Status = 'STATUS',
-  Title = 'TITLE'
+  Title = 'TITLE',
 }
 
 /** Dynamic WHERE conditions for the `where` argument on the query `tickets`. */
@@ -9369,7 +9175,7 @@ export type QueryTicketsWhereWhereConditionsRelation = {
 export enum QueryUsersOrderByColumn {
   Email = 'EMAIL',
   Fullname = 'FULLNAME',
-  Id = 'ID'
+  Id = 'ID',
 }
 
 /** Order by clause for Query.users.orderBy. */
@@ -9410,7 +9216,7 @@ export type QueryUsersWhereWhereConditionsRelation = {
 
 export enum RecipientType {
   Group = 'GROUP',
-  Person = 'PERSON'
+  Person = 'PERSON',
 }
 
 /**
@@ -9523,13 +9329,13 @@ export enum SqlOperator {
   /** Whether a value is not within a set of values (`NOT IN`) */
   NotIn = 'NOT_IN',
   /** Negation of simple pattern matching (`NOT LIKE`) */
-  NotLike = 'NOT_LIKE'
+  NotLike = 'NOT_LIKE',
 }
 
 export enum Securities {
   Auto = 'Auto',
   Ssl = 'Ssl',
-  Starttls = 'Starttls'
+  Starttls = 'Starttls',
 }
 
 export type Sender = {
@@ -9542,12 +9348,12 @@ export enum ServiceType {
   AdminNotify = 'AdminNotify',
   Banking = 'Banking',
   Common = 'Common',
-  System = 'System'
+  System = 'System',
 }
 
 export enum Sex {
   Female = 'Female',
-  Male = 'Male'
+  Male = 'Male',
 }
 
 /** Information about pagination using a simple paginator. */
@@ -9569,7 +9375,7 @@ export type SimplePaginatorInfo = {
 
 export enum Sort {
   Asc = 'ASC',
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 /** Directions for ordering a list of records. */
@@ -9577,7 +9383,7 @@ export enum SortOrder {
   /** Sort records in ascending order. */
   Asc = 'ASC',
   /** Sort records in descending order. */
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 export type StatusType = {
@@ -9687,7 +9493,7 @@ export enum UsersColumn {
   GroupId = 'GROUP_ID',
   GroupTypeId = 'GROUP_TYPE_ID',
   Id = 'ID',
-  RoleId = 'ROLE_ID'
+  RoleId = 'ROLE_ID',
 }
 
 /** A paginated list of Users items. */
@@ -9727,22 +9533,48 @@ export type WhereConditionsRelation = {
   relation: Scalars['String'];
 };
 
-export type GetApplicantIndividualCompanyPositionsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetApplicantIndividualCompanyPositionsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
+export type GetApplicantIndividualCompanyPositionsQuery = {
+  __typename?: 'Query';
+  applicantIndividualCompanyPositions?: {
+    __typename?: 'ApplicantIndividualCompanyPositionPaginator';
+    data: Array<{
+      __typename?: 'ApplicantIndividualCompanyPosition';
+      id: string;
+      name: string;
+    }>;
+  } | null;
+};
 
-export type GetApplicantIndividualCompanyPositionsQuery = { __typename?: 'Query', applicantIndividualCompanyPositions?: { __typename?: 'ApplicantIndividualCompanyPositionPaginator', data: Array<{ __typename?: 'ApplicantIndividualCompanyPosition', id: string, name: string }> } | null };
+export type GetApplicantIndividualCompanyRelationsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
+export type GetApplicantIndividualCompanyRelationsQuery = {
+  __typename?: 'Query';
+  applicantIndividualCompanyRelations?: {
+    __typename?: 'ApplicantIndividualCompanyRelationPaginator';
+    data: Array<{
+      __typename?: 'ApplicantIndividualCompanyRelation';
+      id: string;
+      name: string;
+    }>;
+  } | null;
+};
 
 export const GetApplicantIndividualCompanyPositionsDocument = gql`
-    query getApplicantIndividualCompanyPositions {
-  applicantIndividualCompanyPositions {
-    data {
-      id
-      name
+  query getApplicantIndividualCompanyPositions {
+    applicantIndividualCompanyPositions {
+      data {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useGetApplicantIndividualCompanyPositionsQuery__
@@ -9759,17 +9591,113 @@ export const GetApplicantIndividualCompanyPositionsDocument = gql`
  *   },
  * });
  */
-export function useGetApplicantIndividualCompanyPositionsQuery(baseOptions?: Apollo.QueryHookOptions<GetApplicantIndividualCompanyPositionsQuery, GetApplicantIndividualCompanyPositionsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetApplicantIndividualCompanyPositionsQuery, GetApplicantIndividualCompanyPositionsQueryVariables>(GetApplicantIndividualCompanyPositionsDocument, options);
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function useGetApplicantIndividualCompanyPositionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetApplicantIndividualCompanyPositionsQuery,
+    GetApplicantIndividualCompanyPositionsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetApplicantIndividualCompanyPositionsQuery,
+    GetApplicantIndividualCompanyPositionsQueryVariables
+  >(GetApplicantIndividualCompanyPositionsDocument, options);
+}
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function useGetApplicantIndividualCompanyPositionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetApplicantIndividualCompanyPositionsQuery,
+    GetApplicantIndividualCompanyPositionsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetApplicantIndividualCompanyPositionsQuery,
+    GetApplicantIndividualCompanyPositionsQueryVariables
+  >(GetApplicantIndividualCompanyPositionsDocument, options);
+}
+export type GetApplicantIndividualCompanyPositionsQueryHookResult = ReturnType<
+  typeof useGetApplicantIndividualCompanyPositionsQuery
+>;
+export type GetApplicantIndividualCompanyPositionsLazyQueryHookResult = ReturnType<
+  typeof useGetApplicantIndividualCompanyPositionsLazyQuery
+>;
+export type GetApplicantIndividualCompanyPositionsQueryResult = Apollo.QueryResult<
+  GetApplicantIndividualCompanyPositionsQuery,
+  GetApplicantIndividualCompanyPositionsQueryVariables
+>;
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function refetchGetApplicantIndividualCompanyPositionsQuery(
+  variables?: GetApplicantIndividualCompanyPositionsQueryVariables,
+) {
+  return { query: GetApplicantIndividualCompanyPositionsDocument, variables };
+}
+export const GetApplicantIndividualCompanyRelationsDocument = gql`
+  query getApplicantIndividualCompanyRelations {
+    applicantIndividualCompanyRelations {
+      data {
+        id
+        name
       }
-export function useGetApplicantIndividualCompanyPositionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetApplicantIndividualCompanyPositionsQuery, GetApplicantIndividualCompanyPositionsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetApplicantIndividualCompanyPositionsQuery, GetApplicantIndividualCompanyPositionsQueryVariables>(GetApplicantIndividualCompanyPositionsDocument, options);
-        }
-export type GetApplicantIndividualCompanyPositionsQueryHookResult = ReturnType<typeof useGetApplicantIndividualCompanyPositionsQuery>;
-export type GetApplicantIndividualCompanyPositionsLazyQueryHookResult = ReturnType<typeof useGetApplicantIndividualCompanyPositionsLazyQuery>;
-export type GetApplicantIndividualCompanyPositionsQueryResult = Apollo.QueryResult<GetApplicantIndividualCompanyPositionsQuery, GetApplicantIndividualCompanyPositionsQueryVariables>;
-export function refetchGetApplicantIndividualCompanyPositionsQuery(variables?: GetApplicantIndividualCompanyPositionsQueryVariables) {
-      return { query: GetApplicantIndividualCompanyPositionsDocument, variables: variables }
     }
+  }
+`;
+
+/**
+ * __useGetApplicantIndividualCompanyRelationsQuery__
+ *
+ * To run a query within a React component, call `useGetApplicantIndividualCompanyRelationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetApplicantIndividualCompanyRelationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetApplicantIndividualCompanyRelationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function useGetApplicantIndividualCompanyRelationsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetApplicantIndividualCompanyRelationsQuery,
+    GetApplicantIndividualCompanyRelationsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetApplicantIndividualCompanyRelationsQuery,
+    GetApplicantIndividualCompanyRelationsQueryVariables
+  >(GetApplicantIndividualCompanyRelationsDocument, options);
+}
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function useGetApplicantIndividualCompanyRelationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetApplicantIndividualCompanyRelationsQuery,
+    GetApplicantIndividualCompanyRelationsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetApplicantIndividualCompanyRelationsQuery,
+    GetApplicantIndividualCompanyRelationsQueryVariables
+  >(GetApplicantIndividualCompanyRelationsDocument, options);
+}
+export type GetApplicantIndividualCompanyRelationsQueryHookResult = ReturnType<
+  typeof useGetApplicantIndividualCompanyRelationsQuery
+>;
+export type GetApplicantIndividualCompanyRelationsLazyQueryHookResult = ReturnType<
+  typeof useGetApplicantIndividualCompanyRelationsLazyQuery
+>;
+export type GetApplicantIndividualCompanyRelationsQueryResult = Apollo.QueryResult<
+  GetApplicantIndividualCompanyRelationsQuery,
+  GetApplicantIndividualCompanyRelationsQueryVariables
+>;
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function refetchGetApplicantIndividualCompanyRelationsQuery(
+  variables?: GetApplicantIndividualCompanyRelationsQueryVariables,
+) {
+  return { query: GetApplicantIndividualCompanyRelationsDocument, variables };
+}
